@@ -32,7 +32,7 @@ public class ResourceSet<T> {
             ResourceSet<T> set = new ResourceSet<>();
             set.data = results;
             set.hasMore = root.get("hasMore").asBoolean();
-            set.object = root.get("object").asText();
+            set.object = root.get("object") != null ? root.get("object").asText() : null;
             set.totalCount = root.get("totalCount").asInt();
             set.limit = root.get("limit").asInt();
             set.offset = root.get("offset").asInt();

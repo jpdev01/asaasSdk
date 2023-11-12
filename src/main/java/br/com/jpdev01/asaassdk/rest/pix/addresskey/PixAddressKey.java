@@ -18,6 +18,10 @@ public class PixAddressKey {
         return new PixAddressKeyCreator();
     }
 
+    public static PixAddressKeyReader reader() {
+        return new PixAddressKeyReader();
+    }
+
     public PixAddressKey() {}
 
     public String getId() {

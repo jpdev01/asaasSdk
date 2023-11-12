@@ -66,7 +66,8 @@ public class Teste {
 //                .setDescription("Teste")
 //                .create();
 
-        PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
+        // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
+        PixAddressKey.reader().read();
     }
 
 }
