@@ -5,6 +5,7 @@ import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKeyCreator;
+import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKeyReader;
 import br.com.jpdev01.asaassdk.rest.pix.qrcode.PixQrCode;
 import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
 import br.com.jpdev01.asaassdk.rest.transfer.TransferReader;
@@ -14,6 +15,7 @@ import br.com.jpdev01.asaassdk.rest.transfer.children.BankSetting;
 import br.com.jpdev01.asaassdk.rest.transfer.children.BankAccountSetting;
 import br.com.jpdev01.asaassdk.utils.BillingType;
 import br.com.jpdev01.asaassdk.utils.Money;
+import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
 
 import java.math.BigDecimal;
@@ -69,12 +71,17 @@ public class Teste {
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
-        PixQrCode qrCode = PixQrCode
-                .creator()
-                .setAddressKey(PixAddressKey.reader().read().getData().get(0).key)
-                .setDescription("teste")
-                .setValue(new BigDecimal("0.01")).create();
-        System.out.printf(qrCode.id);
+//        PixQrCode qrCode = PixQrCode
+//                .creator()
+//                .setAddressKey(PixAddressKey.reader().read().getData().get(0).key)
+//                .setDescription("teste")
+//                .setValue(new BigDecimal("0.01")).create();
+//        System.out.printf(qrCode.id);
+
+        PixAddressKey.reader()
+                .setStatus(PixAddressKeyStatus.ACTIVE)
+                .setLimit(1)
+                .read();
     }
 
 }
