@@ -53,6 +53,10 @@ public class Payment {
         return new PaymentCreator();
     }
 
+    public static PaymentRefunder refunder(Long id) {
+        return new PaymentRefunder(id);
+    }
+
     public String getObject() {
         return object;
     }

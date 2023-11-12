@@ -1,8 +1,11 @@
 package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
+import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
+
+import java.math.BigDecimal;
 
 public class Teste {
 
@@ -65,6 +68,7 @@ public class Teste {
                 .setLimit(1)
                 .read();
 
+        Payment.refunder(266093389L).setValue(new BigDecimal("0.01")).create();
     }
 
 }
