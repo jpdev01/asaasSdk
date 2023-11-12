@@ -3,7 +3,8 @@ package br.com.jpdev01.asaassdk.http;
 public enum Domain {
 
     TRANSFER("transfers"),
-    PAYMENT("payments");
+    PAYMENT("payments"),
+    PIX_ADDRESS_KEY("pix/addressKeys");
 
     private final String value;
 
