@@ -43,4 +43,28 @@ public class ResourceSet<T> {
             );
         }
     }
+
+    public String getObject() {
+        return object;
+    }
+
+    public boolean isHasMore() {
+        return hasMore;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public List<T> getData() {
+        return data;
+    }
 }

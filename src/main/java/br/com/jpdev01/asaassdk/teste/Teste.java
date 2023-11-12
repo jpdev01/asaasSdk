@@ -5,6 +5,7 @@ import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKeyCreator;
+import br.com.jpdev01.asaassdk.rest.pix.qrcode.PixQrCode;
 import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
 import br.com.jpdev01.asaassdk.rest.transfer.TransferReader;
 import br.com.jpdev01.asaassdk.rest.transfer.TransferTedCreator;
@@ -67,7 +68,13 @@ public class Teste {
 //                .create();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
-        PixAddressKey.reader().read();
+        // PixAddressKey.reader().read();
+        PixQrCode qrCode = PixQrCode
+                .creator()
+                .setAddressKey(PixAddressKey.reader().read().getData().get(0).key)
+                .setDescription("teste")
+                .setValue(new BigDecimal("0.01")).create();
+        System.out.printf(qrCode.id);
     }
 
 }
