@@ -1,5 +1,8 @@
 package br.com.jpdev01.asaassdk.rest.pix;
 
+import br.com.jpdev01.asaassdk.utils.PersonType;
+import br.com.jpdev01.asaassdk.utils.pix.PixAccountType;
+
 public class PixTransactionExternalAccount {
 
     public int ispb;
@@ -7,10 +10,10 @@ public class PixTransactionExternalAccount {
     public String name;
     public Object tradingName;
     public String cpfCnpj;
-    public String personType;
+    public PersonType personType;
     public String agency;
     public String account;
-    public String accountType;
+    public PixAccountType accountType;
 
     public int getIspb() {
         return ispb;
@@ -57,11 +60,11 @@ public class PixTransactionExternalAccount {
         return this;
     }
 
-    public String getPersonType() {
+    public PersonType getPersonType() {
         return personType;
     }
 
-    public PixTransactionExternalAccount setPersonType(String personType) {
+    public PixTransactionExternalAccount setPersonType(PersonType personType) {
         this.personType = personType;
         return this;
     }
@@ -84,11 +87,11 @@ public class PixTransactionExternalAccount {
         return this;
     }
 
-    public String getAccountType() {
+    public PixAccountType getAccountType() {
         return accountType;
     }
 
-    public PixTransactionExternalAccount setAccountType(String accountType) {
+    public PixTransactionExternalAccount setAccountType(PixAccountType accountType) {
         this.accountType = accountType;
         return this;
     }
