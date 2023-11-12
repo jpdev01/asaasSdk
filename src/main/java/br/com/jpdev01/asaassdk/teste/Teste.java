@@ -1,26 +1,8 @@
 package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
-import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
-import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
-import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKeyCreator;
-import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKeyReader;
-import br.com.jpdev01.asaassdk.rest.pix.qrcode.PixQrCode;
-import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
-import br.com.jpdev01.asaassdk.rest.transfer.TransferReader;
-import br.com.jpdev01.asaassdk.rest.transfer.TransferTedCreator;
-import br.com.jpdev01.asaassdk.rest.transfer.children.BankAccountType;
-import br.com.jpdev01.asaassdk.rest.transfer.children.BankSetting;
-import br.com.jpdev01.asaassdk.rest.transfer.children.BankAccountSetting;
-import br.com.jpdev01.asaassdk.utils.BillingType;
-import br.com.jpdev01.asaassdk.utils.Money;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
-import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Teste {
 
@@ -82,6 +64,7 @@ public class Teste {
                 .setStatus(PixAddressKeyStatus.ACTIVE)
                 .setLimit(1)
                 .read();
+
     }
 
 }
