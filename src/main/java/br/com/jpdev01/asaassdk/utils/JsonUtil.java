@@ -2,14 +2,8 @@ package br.com.jpdev01.asaassdk.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.gson.GsonBuilder;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-/**
- * @author bosco
- */
 public class JsonUtil {
 
     private static ObjectMapper objectMapper = null;
