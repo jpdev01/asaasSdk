@@ -1,12 +1,10 @@
 package br.com.jpdev01.asaassdk.rest.transfer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@ToString
 public class Transfer {
 
     private BigDecimal value;
@@ -19,7 +17,19 @@ public class Transfer {
         this.value = value;
     }
 
-    public static TransferCreator creator() {
-        return new TransferCreator();
+    public static TransferPixAddressKeyCreator pixAddressKeyCreator() {
+        return new TransferPixAddressKeyCreator();
+    }
+
+    public static TransferPixManualCreator pixManualCreator() {
+        return new TransferPixManualCreator();
+    }
+
+    public static TransferTedCreator tedCreator() {
+        return new TransferTedCreator().setOperationType("TED");
+    }
+
+    public static TransferReader reader() {
+        return new TransferReader();
     }
 }

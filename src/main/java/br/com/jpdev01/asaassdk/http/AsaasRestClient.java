@@ -1,20 +1,31 @@
 package br.com.jpdev01.asaassdk.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
 import java.util.List;
 
 
 public class AsaasRestClient {
 
-
-    @Getter
     private final ObjectMapper objectMapper;
     private final String token;
-    @Getter
     private final ApacheHttpClient client;
-    @Getter
     private final List<String> userAgentExtensions;
+
+    public ObjectMapper getObjectMapper() {
+        return objectMapper;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public ApacheHttpClient getClient() {
+        return client;
+    }
+
+    public List<String> getUserAgentExtensions() {
+        return userAgentExtensions;
+    }
 
     protected AsaasRestClient(Builder b) {
         this.token = b.token;
@@ -29,32 +40,22 @@ public class AsaasRestClient {
         return client.post(completedUrl, body);
     }
 
+    public Response get(String url) {
+        String completedUrl = Asaas.getBaseUrl() + "/" + url;
+        return client.get(completedUrl);
+    }
+
     public static class Builder {
         private String token;
 
         private ApacheHttpClient httpClient;
         private List<String> userAgentExtensions;
 
-        /**
-         * Create a new Twilio Rest Client.
-         *
-         * @param token token to use
-         */
         public Builder(final String token) {
             this.token = token;
         }
 
-//        public Builder client(final HttpClient client) {
-//            this.client = client;
-//            return this;
-//        }
 
-
-        /**
-         * Build new TwilioRestClient.
-         *
-         * @return TwilioRestClient instance
-         */
         public AsaasRestClient build() {
             if (this.httpClient == null) {
                 this.httpClient = new ApacheHttpClient(this.token);

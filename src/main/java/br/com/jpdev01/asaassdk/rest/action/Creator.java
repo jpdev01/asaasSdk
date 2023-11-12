@@ -1,5 +1,6 @@
-package br.com.jpdev01.asaassdk.rest.creator;
+package br.com.jpdev01.asaassdk.rest.action;
 
+import br.com.jpdev01.asaassdk.exception.ApiException;
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.utils.JsonUtil;
 import br.com.jpdev01.asaassdk.http.AsaasRestClient;
@@ -17,12 +18,16 @@ public abstract class Creator<T> {
 
     public T create(final AsaasRestClient client) {
         Response response = client.post(getResourceUrl(), JsonUtil.toJSON(this));
-        return parseResponse(response.getContent());
+        return parseResponse(response);
     }
 
-    private T parseResponse(String content) {
+    private T parseResponse(Response response) {
+        if (response.getStatusCode() == 400) {
+            throw new ApiException(400, response.getContent());
+        }
+
         try {
-            return objectMapper.readValue(content, getResourceClass());
+            return objectMapper.readValue(response.getContent(), getResourceClass());
         } catch (Exception e) {
             throw new RuntimeException("Error parsing response", e);
         }

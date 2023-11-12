@@ -17,10 +17,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-/**
- *
- * @author jpdev01
- */
 public class ApacheHttpClient {
 
     private final String accessToken;
@@ -31,7 +27,7 @@ public class ApacheHttpClient {
         httpclient = HttpClients.createDefault();
     }
 
-    public String get(String url) throws ConnectionException {
+    public Response get(String url) throws ConnectionException {
         try {
             HttpGet httpGet = new HttpGet(url);
             httpGet.addHeader("access_token", accessToken);
@@ -45,12 +41,14 @@ public class ApacheHttpClient {
             HttpEntity entity = response.getEntity();
             String retorno = EntityUtils.toString(entity);
 
-            return retorno;
+            return new Response(
+                    retorno,
+                    response.getStatusLine().getStatusCode()
+            );
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
             throw new ConnectionException(500, ex.getMessage());
         }
-        //return null;
     }
 
     public String delete(String url) throws ConnectionException {
@@ -85,8 +83,7 @@ public class ApacheHttpClient {
 
             StatusLine status = response.getStatusLine();
 
-
-            if (status.getStatusCode() != 200 && status.getStatusCode() != 400) {
+            if (status.getStatusCode() != HttpStatus.SC_OK && status.getStatusCode() != HttpStatus.SC_BAD_REQUEST) {
                 System.out.println(status.getReasonPhrase());
                 throw new ConnectionException(status.getStatusCode(), status.getReasonPhrase());
             }
@@ -97,7 +94,7 @@ public class ApacheHttpClient {
             );
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ConnectionException(500, ex.getMessage());
+            throw new ConnectionException(HttpStatus.SC_INTERNAL_SERVER_ERROR, ex.getMessage());
         }
     }
 

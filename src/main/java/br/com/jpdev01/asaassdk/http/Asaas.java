@@ -2,16 +2,21 @@ package br.com.jpdev01.asaassdk.http;
 
 public class Asaas {
 
-    private static final String ENDPOINT_PRODUCAO = "https://www.asaas.com/api/v3";
-    private static final String ENDPOINT_HOMOLOGACAO = "https://sandbox.asaas.com/api/v3";
+    private static final String ENDPOINT_PRODUCTION = "https://www.asaas.com/api/v3";
+    private static final String ENDPOINT_SANDBOX = "https://sandbox.asaas.com/api/v3";
 
     private static String token;
 
     public static AsaasRestClient restClient;
 
-    public static String baseUrl = ENDPOINT_PRODUCAO;
+    public static String baseUrl = ENDPOINT_PRODUCTION;
 
     public static synchronized void init(final String token) {
+        Asaas.setToken(token);
+    }
+
+    public static synchronized void initSandbox(final String token) {
+        Asaas.baseUrl = ENDPOINT_SANDBOX;
         Asaas.setToken(token);
     }
 
@@ -29,11 +34,6 @@ public class Asaas {
         }
 
         return Asaas.restClient;
-    }
-
-    public static synchronized void initSandbox(final String token) {
-        Asaas.baseUrl = ENDPOINT_HOMOLOGACAO;
-        Asaas.setToken(token);
     }
 
     public static String getBaseUrl() {

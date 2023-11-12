@@ -1,10 +1,10 @@
 package br.com.jpdev01.asaassdk.exception;
 
-public class ConnectionException extends RuntimeException {
+public class ApiException extends RuntimeException {
 
     private int code;
 
-    public ConnectionException(int code, String message) {
+    public ApiException(int code, String message) {
         super(message);
         this.code = code;
     }
