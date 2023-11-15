@@ -1,6 +1,7 @@
 package br.com.jpdev01.asaassdk.rest.pix;
 
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
+import br.com.jpdev01.asaassdk.utils.pix.PixTransactionOriginType;
 import br.com.jpdev01.asaassdk.utils.pix.PixTransactionStatus;
 import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
 
@@ -23,14 +24,14 @@ public class PixTransaction {
     public PixTransactionStatus status;
 
     public PixTransactionType type;
-    public String originType;
-    public Object conciliationIdentifier;
-    public Object description;
+    public PixTransactionOriginType originType;
+    public String conciliationIdentifier;
+    public String description;
     public String transactionReceiptUrl;
     public int chargedFeeValue;
     public boolean canBeRefunded;
-    public Object refundDisabledReason;
-    public Object refusalReason;
+    public String refundDisabledReason;
+    public String refusalReason;
     public boolean canBeCanceled;
     public Object originalTransaction;
     public PixTransactionExternalAccount externalAccount;
