@@ -1,6 +1,10 @@
 package br.com.jpdev01.asaassdk.rest.pix;
 
+import br.com.jpdev01.asaassdk.utils.pix.PixTransactionStatus;
+import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
+
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class PixTransaction {
 
@@ -14,10 +18,10 @@ public class PixTransaction {
     public int refundedValue;
     public String dateCreated;
     public String effectiveDate;
-    public Object scheduledDate;
-    public String status;
+    public Date scheduledDate;
+    public PixTransactionStatus status;
 
-    public String type;
+    public PixTransactionType type;
     public String originType;
     public Object conciliationIdentifier;
     public Object description;
