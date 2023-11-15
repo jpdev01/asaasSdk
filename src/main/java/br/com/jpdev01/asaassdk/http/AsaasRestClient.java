@@ -1,6 +1,13 @@
 package br.com.jpdev01.asaassdk.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleDeserializers;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -30,7 +37,7 @@ public class AsaasRestClient {
     protected AsaasRestClient(Builder b) {
         this.token = b.token;
         this.client = b.httpClient;
-        this.objectMapper = new ObjectMapper();
+        this.objectMapper = buildMapper();
         this.userAgentExtensions = b.userAgentExtensions;
     }
 
@@ -61,6 +68,39 @@ public class AsaasRestClient {
                 this.httpClient = new ApacheHttpClient(this.token);
             }
             return new AsaasRestClient(this);
+        }
+    }
+
+
+    private ObjectMapper buildMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        SimpleModule module = new SimpleModule();
+
+        SimpleDeserializers deserializers = new SimpleDeserializers();
+        deserializers.addDeserializer(Date.class, new CustomDateDeserializer());
+        module.setDeserializers(deserializers);
+
+        mapper.registerModule(module);
+        return mapper;
+    }
+
+    static class CustomDateDeserializer extends com.fasterxml.jackson.databind.JsonDeserializer<Date> {
+        private final SimpleDateFormat dateFormatWithTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        private final SimpleDateFormat dateFormatWithoutTime = new SimpleDateFormat("yyyy-MM-dd");
+
+        @Override
+        public Date deserialize(com.fasterxml.jackson.core.JsonParser jsonParser, com.fasterxml.jackson.databind.DeserializationContext deserializationContext)
+                throws IOException {
+            String date = jsonParser.getText();
+            try {
+                if (date.contains(":")) {
+                    return dateFormatWithTime.parse(date);
+                } else {
+                    return dateFormatWithoutTime.parse(date);
+                }
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

@@ -14,10 +14,10 @@ public class PixTransaction {
     public Object finality;
 
     public BigDecimal value;
-    public Object changeValue;
-    public int refundedValue;
-    public String dateCreated;
-    public String effectiveDate;
+    public BigDecimal changeValue;
+    public BigDecimal refundedValue;
+    public Date dateCreated;
+    public Date effectiveDate;
     public Date scheduledDate;
     public PixTransactionStatus status;
 
