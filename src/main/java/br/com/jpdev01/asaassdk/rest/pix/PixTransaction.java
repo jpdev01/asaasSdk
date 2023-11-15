@@ -1,5 +1,6 @@
 package br.com.jpdev01.asaassdk.rest.pix;
 
+import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
 import br.com.jpdev01.asaassdk.utils.pix.PixTransactionStatus;
 import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
 
@@ -35,8 +36,8 @@ public class PixTransaction {
     public PixTransactionExternalAccount externalAccount;
     public Object qrCode;
     public Object payment;
-    public Object addressKey;
-    public Object addressKeyType;
+    public String addressKey;
+    public PixAddressKeyType addressKeyType;
 
     public PixTransaction() {
 
