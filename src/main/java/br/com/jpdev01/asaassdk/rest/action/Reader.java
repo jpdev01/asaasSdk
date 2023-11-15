@@ -58,7 +58,7 @@ public abstract class Reader<T> {
     private String buildFullPath() {
         try {
             String path = getResourceUrl();
-            if (activeFilters.isEmpty()) return path;
+            if (activeFilters == null || activeFilters.isEmpty()) return path;
 
             String pathParams = "";
             for (String propertyName : activeFilters) {

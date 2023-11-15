@@ -5,6 +5,7 @@ public enum Domain {
     TRANSFER("transfers"),
     PAYMENT("payments"),
     REFUND_PAYMENT("payments/$id/refund"),
+    PIX_TRANSACTION("pix/transactions"),
     PIX_ADDRESS_KEY("pix/addressKeys"),
     STATIC_PIX_QR_CODE("pix/qrCodes/static"),
     DECODE_PIX_QR_CODE("pix/qrCodes/decode");

@@ -2,6 +2,7 @@ package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
+import br.com.jpdev01.asaassdk.rest.pix.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
 
@@ -10,7 +11,7 @@ import java.math.BigDecimal;
 public class Teste {
 
     public static void main(String[] args) {
-        Asaas.init("");
+        Asaas.init("65423973f1a608edd73426916047289c647afb69fcb511b5a4f1288f3284dfa4");
 //        Transfer transfer = Transfer.pixAddressKeyCreator()
 //                .setPixAddressKey("09414368965")
 //                .setValue(Money.create(new BigDecimal(0.01)))
@@ -68,7 +69,7 @@ public class Teste {
                 .setLimit(1)
                 .read();
 
-        Payment.refunder(266093389L).setValue(new BigDecimal("0.01")).create();
+        PixTransaction.reader().read();
     }
 
 }

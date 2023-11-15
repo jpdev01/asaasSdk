@@ -1,9 +1,9 @@
-package br.com.jpdev01.asaassdk.rest.pix;
+package br.com.jpdev01.asaassdk.rest.pix.qrcode.decode;
 
 import br.com.jpdev01.asaassdk.utils.PersonType;
 import br.com.jpdev01.asaassdk.utils.pix.PixAccountType;
 
-public class PixTransactionExternalAccount {
+public class PixQrCodeReceiver {
 
     public int ispb;
     public String ispbName;
@@ -14,13 +14,5 @@ public class PixTransactionExternalAccount {
     public PersonType personType;
     public String agency;
     public String account;
-
-    public String accountDigit;
-
-    public String addressKey;
-
-    public String addressKeyType;
-
     public PixAccountType accountType;
-
 }

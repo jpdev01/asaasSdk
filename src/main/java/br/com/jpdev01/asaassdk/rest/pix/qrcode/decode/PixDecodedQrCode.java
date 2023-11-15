@@ -1,7 +1,5 @@
 package br.com.jpdev01.asaassdk.rest.pix.qrcode.decode;
 
-import br.com.jpdev01.asaassdk.rest.pix.PixTransactionExternalAccount;
-
 public class PixDecodedQrCode {
 
     public String payload;
@@ -21,7 +19,7 @@ public class PixDecodedQrCode {
     public double fine;
     public double discount;
     public double totalValue;
-    public PixTransactionExternalAccount receiver;
+    public PixQrCodeReceiver receiver;
     public PixQrCodePayer payer;
     public String description;
     public boolean canBePaid;
@@ -183,11 +181,11 @@ public class PixDecodedQrCode {
         return this;
     }
 
-    public PixTransactionExternalAccount getReceiver() {
+    public PixQrCodeReceiver getReceiver() {
         return receiver;
     }
 
-    public PixDecodedQrCode setReceiver(PixTransactionExternalAccount receiver) {
+    public PixDecodedQrCode setReceiver(PixQrCodeReceiver receiver) {
         this.receiver = receiver;
         return this;
     }
