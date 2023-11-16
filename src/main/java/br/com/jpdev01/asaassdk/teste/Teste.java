@@ -8,7 +8,7 @@ import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
 public class Teste {
 
     public static void main(String[] args) {
-        Asaas.init("65423973f1a608edd73426916047289c647afb69fcb511b5a4f1288f3284dfa4");
+        Asaas.init("");
 //        Transfer transfer = Transfer.pixAddressKeyCreator()
 //                .setPixAddressKey("09414368965")
 //                .setValue(Money.create(new BigDecimal(0.01)))
