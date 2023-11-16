@@ -1,4 +1,4 @@
-package br.com.jpdev01.asaassdk.rest.pix;
+package br.com.jpdev01.asaassdk.rest.pix.transaction;
 
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
 import br.com.jpdev01.asaassdk.utils.pix.PixTransactionOriginType;
@@ -46,5 +46,9 @@ public class PixTransaction {
 
     public static PixTransactionReader reader() {
         return new PixTransactionReader();
+    }
+
+    public static PixTransactionFetcher fetcher(Object id) {
+        return new PixTransactionFetcher(id);
     }
 }

@@ -1,12 +1,9 @@
 package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
-import br.com.jpdev01.asaassdk.rest.payment.Payment;
-import br.com.jpdev01.asaassdk.rest.pix.PixTransaction;
+import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
-
-import java.math.BigDecimal;
 
 public class Teste {
 
@@ -70,6 +67,7 @@ public class Teste {
                 .read();
 
         PixTransaction.reader().read();
+        PixTransaction.fetcher("bc515f74-d5c7-4bc2-93e5-3bafc0a9b15d").fetch();
     }
 
 }

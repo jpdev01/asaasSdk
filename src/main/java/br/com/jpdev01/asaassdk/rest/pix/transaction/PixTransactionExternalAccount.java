@@ -1,4 +1,4 @@
-package br.com.jpdev01.asaassdk.rest.pix;
+package br.com.jpdev01.asaassdk.rest.pix.transaction;
 
 import br.com.jpdev01.asaassdk.utils.PersonType;
 import br.com.jpdev01.asaassdk.utils.pix.PixAccountType;
