@@ -8,10 +8,7 @@ import java.util.logging.Logger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -39,10 +36,10 @@ public class ApacheHttpClient {
             }
 
             HttpEntity entity = response.getEntity();
-            String retorno = EntityUtils.toString(entity);
+            String responseBody = EntityUtils.toString(entity);
 
             return new Response(
-                    retorno,
+                    responseBody,
                     response.getStatusLine().getStatusCode()
             );
         } catch (IOException ex) {
@@ -58,13 +55,12 @@ public class ApacheHttpClient {
             CloseableHttpResponse response = httpclient.execute(httpDelete);
 
             StatusLine status = response.getStatusLine();
-            if (status.getStatusCode() != 200) {
+            if (status.getStatusCode() != HttpStatus.SC_OK) {
                 throw new ConnectionException(status.getStatusCode(), status.getReasonPhrase());
             }
             HttpEntity entity = response.getEntity();
-            String retorno = EntityUtils.toString(entity);
-            //System.out.println(retorno);
-            return retorno;
+            String responseBody = EntityUtils.toString(entity);
+            return responseBody;
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
             throw new ConnectionException(500, ex.getMessage());
@@ -84,7 +80,32 @@ public class ApacheHttpClient {
             StatusLine status = response.getStatusLine();
 
             if (status.getStatusCode() != HttpStatus.SC_OK && status.getStatusCode() != HttpStatus.SC_BAD_REQUEST) {
-                System.out.println(status.getReasonPhrase());
+                throw new ConnectionException(status.getStatusCode(), status.getReasonPhrase());
+            }
+
+            return new Response(
+                    EntityUtils.toString(response.getEntity()),
+                    response.getStatusLine().getStatusCode()
+            );
+        } catch (IOException ex) {
+            Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ConnectionException(HttpStatus.SC_INTERNAL_SERVER_ERROR, ex.getMessage());
+        }
+    }
+
+    public Response put(String url, String body) throws ConnectionException {
+        try {
+            HttpPut httpPost = new HttpPut(url);
+            httpPost.addHeader("access_token", accessToken);
+
+            StringEntity entity = new StringEntity(body);
+            httpPost.setEntity(entity);
+
+            CloseableHttpResponse response = httpclient.execute(httpPost);
+
+            StatusLine status = response.getStatusLine();
+
+            if (status.getStatusCode() != HttpStatus.SC_OK && status.getStatusCode() != HttpStatus.SC_BAD_REQUEST) {
                 throw new ConnectionException(status.getStatusCode(), status.getReasonPhrase());
             }
 
