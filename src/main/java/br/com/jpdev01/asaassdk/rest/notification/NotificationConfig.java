@@ -1,5 +1,8 @@
 package br.com.jpdev01.asaassdk.rest.notification;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NotificationConfig {
 
     public String object;
@@ -11,12 +14,17 @@ public class NotificationConfig {
     public boolean emailEnabledForCustomer;
     public boolean smsEnabledForCustomer;
     public boolean phoneCallEnabledForCustomer;
+    public boolean whatsappEnabledForCustomer;
     public String event;
     public int scheduleOffset;
     public boolean deleted;
 
-    public static NotificationConfigUpdater updater(Long id) {
+    public static NotificationConfigUpdater updater(String id) {
         return new NotificationConfigUpdater(id);
+    }
+
+    public static CustomerAccountNotificationConfigReader customerAccountReader(String customerAccountId) {
+        return new CustomerAccountNotificationConfigReader(customerAccountId);
     }
 
     public String getObject() {
@@ -65,5 +73,9 @@ public class NotificationConfig {
 
     public boolean isDeleted() {
         return deleted;
+    }
+
+    public boolean isWhatsappEnabledForCustomer() {
+        return whatsappEnabledForCustomer;
     }
 }

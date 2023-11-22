@@ -54,7 +54,7 @@ public class AsaasRestClient {
 
     public Response put(String url, String body) {
         String completedUrl = Asaas.getBaseUrl() + "/" + url;
-        return client.post(completedUrl, body);
+        return client.put(completedUrl, body);
     }
 
     public static class Builder {

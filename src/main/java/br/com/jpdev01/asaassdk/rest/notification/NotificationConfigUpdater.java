@@ -2,10 +2,13 @@ package br.com.jpdev01.asaassdk.rest.notification;
 
 import br.com.jpdev01.asaassdk.http.Domain;
 import br.com.jpdev01.asaassdk.rest.action.Updater;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class NotificationConfigUpdater extends Updater<NotificationConfig> {
 
-    private Long id;
+    private String id;
     Boolean enabled;
     Boolean emailEnabledForProvider;
     Boolean smsEnabledForProvider;
@@ -15,7 +18,7 @@ public class NotificationConfigUpdater extends Updater<NotificationConfig> {
     Boolean whatsappEnabledForCustomer;
     String scheduleOffset;
 
-    public NotificationConfigUpdater(Long id) {
+    public NotificationConfigUpdater(String id) {
         this.id = id;
     }
 
@@ -92,12 +95,14 @@ public class NotificationConfigUpdater extends Updater<NotificationConfig> {
     }
 
     @Override
+    @JsonIgnore
     public String getResourceUrl() {
         return Domain.NOTIFICATION.addPathVariable(this.id.toString());
     }
 
     @Override
+    @JsonIgnore
     public Class<NotificationConfig> getResourceClass() {
-        return null;
+        return NotificationConfig.class;
     }
 }

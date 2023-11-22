@@ -1,12 +1,14 @@
 package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
+import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
 import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
-import br.com.jpdev01.asaassdk.rest.notification.NotificationConfigUpdater;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
+
+import java.util.List;
 
 public class Teste {
 
@@ -76,7 +78,8 @@ public class Teste {
                 .setName("criado via API")
                 .setCpfCnpj("10030823005")
                 .create();
-        //NotificationConfig.updater()
+        ResourceSet<NotificationConfig> notificationConfigList = NotificationConfig.customerAccountReader(customerAccount.getId()).read();
+        NotificationConfig.updater(notificationConfigList.getData().get(0).getId()).setEnabled(false).update();
     }
 
 }
