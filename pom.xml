@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.jpdev01</groupId>
     <artifactId>asaassdk</artifactId>
-    <version>3.6.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -26,5 +26,13 @@
             <version>2.14.1</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Maven Packages</name>
+            <url>https://maven.pkg.github.com/jpdev01/asaassdk</url>
+        </repository>
+    </distributionManagement>
 
 </project>
