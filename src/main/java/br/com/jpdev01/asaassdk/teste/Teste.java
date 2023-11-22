@@ -2,6 +2,7 @@ package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
+import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccountFetcher;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
@@ -74,6 +75,7 @@ public class Teste {
 //                .setName("criado via API")
 //                .setCpfCnpj("10030823005")
 //                .create();
+        CustomerAccount.fetcher("cus_000072683044").fetch();
     }
 
 }
