@@ -38,6 +38,10 @@ public class CustomerAccount {
         return new CustomerAccountCreator();
     }
 
+    public static CustomerAccountFetcher fetcher(String id) {
+        return new CustomerAccountFetcher(id);
+    }
+
     public String getObject() {
         return object;
     }
