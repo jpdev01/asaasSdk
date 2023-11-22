@@ -8,7 +8,8 @@ public enum Domain {
     PIX_TRANSACTION("pix/transactions"),
     PIX_ADDRESS_KEY("pix/addressKeys"),
     STATIC_PIX_QR_CODE("pix/qrCodes/static"),
-    DECODE_PIX_QR_CODE("pix/qrCodes/decode");
+    DECODE_PIX_QR_CODE("pix/qrCodes/decode"),
+    CUSTOMER_ACCOUNT("customers");
 
     private final String value;
 
