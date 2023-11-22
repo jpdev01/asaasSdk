@@ -1,11 +1,15 @@
 package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
+import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
+import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccountFetcher;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
+
+import java.util.List;
 
 public class Teste {
 
@@ -71,10 +75,12 @@ public class Teste {
         PixTransaction.reader().read();
         PixTransaction.fetcher("bc515f74-d5c7-4bc2-93e5-3bafc0a9b15d").fetch();
 
-//        CustomerAccount customerAccount = CustomerAccount.creator()
-//                .setName("criado via API")
-//                .setCpfCnpj("10030823005")
-//                .create();
+        CustomerAccount customerAccount = CustomerAccount.creator()
+                .setName("criado via API")
+                .setCpfCnpj("10030823005")
+                .create();
+        ResourceSet<NotificationConfig> notificationConfigList = NotificationConfig.customerAccountReader(customerAccount.getId()).read();
+        NotificationConfig.updater(notificationConfigList.getData().get(0).getId()).setEnabled(false).update();
         CustomerAccount.fetcher("cus_000072683044").fetch();
     }
 
