@@ -5,8 +5,11 @@ import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
 import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccountFetcher;
+import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
+import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixQrCodeDecoder;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
+import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
 
 import java.util.List;
@@ -67,6 +70,10 @@ public class Teste {
 //                .setValue(new BigDecimal("0.01")).create();
 //        System.out.printf(qrCode.id);
 
+        ResourceSet<Transfer> transferList = Transfer.reader().read();
+        PixDecodedQrCode decodedQrCode = PixDecodedQrCode.decoder()
+                        .setPayload("payload")
+                        .create();
         PixAddressKey.reader()
                 .setStatus(PixAddressKeyStatus.ACTIVE)
                 .setLimit(1)

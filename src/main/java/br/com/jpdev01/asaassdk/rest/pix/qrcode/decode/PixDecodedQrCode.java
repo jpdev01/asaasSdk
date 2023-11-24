@@ -28,6 +28,11 @@ public class PixDecodedQrCode {
     public PixDecodedQrCode() {
 
     }
+
+    public static PixQrCodeDecoder decoder() {
+        return new PixQrCodeDecoder();
+    }
+
     public String getPayload() {
         return payload;
     }
