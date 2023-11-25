@@ -1,9 +1,9 @@
-package br.com.jpdev01.asaassdk.rest.payment.delete;
+package br.com.jpdev01.asaassdk.rest.commons;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PaymentDeleted {
+public class DeletedResource {
 
     public boolean deleted;
     public String id;
@@ -12,7 +12,7 @@ public class PaymentDeleted {
         return deleted;
     }
 
-    public PaymentDeleted setDeleted(boolean deleted) {
+    public DeletedResource setDeleted(boolean deleted) {
         this.deleted = deleted;
         return this;
     }
@@ -21,7 +21,7 @@ public class PaymentDeleted {
         return id;
     }
 
-    public PaymentDeleted setId(String id) {
+    public DeletedResource setId(String id) {
         this.id = id;
         return this;
     }

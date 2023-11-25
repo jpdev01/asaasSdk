@@ -2,25 +2,16 @@ package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
-import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
 import br.com.jpdev01.asaassdk.rest.installment.Installment;
-import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
+import br.com.jpdev01.asaassdk.rest.installment.InstallmentDeleter;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
-import br.com.jpdev01.asaassdk.rest.payment.delete.PaymentDeleted;
-import br.com.jpdev01.asaassdk.rest.payment.delete.PaymentDeleter;
+import br.com.jpdev01.asaassdk.rest.commons.DeletedResource;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
-import br.com.jpdev01.asaassdk.rest.payment.restore.PaymentRestorer;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
-import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
-import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
-import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
-import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
 import br.com.jpdev01.asaassdk.utils.BillingType;
 import br.com.jpdev01.asaassdk.utils.Money;
 import br.com.jpdev01.asaassdk.utils.PaymentStatus;
-import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Teste {
@@ -77,10 +68,11 @@ public class Teste {
                 .setFinishDueDate(new Date())
                 .read();
 
-        PaymentDeleted paymentDeleted = Payment.deleter(payment.getId()).delete();
+        DeletedResource paymentDeleted = Payment.deleter(payment.getId()).delete();
         payment = Payment.restorer(payment.getId()).create();
 
         ResourceSet<Installment> installmentResourceSet = Installment.reader().read();
+        DeletedResource installmentDeleted = Installment.deleter(installmentResourceSet.getData().get(0).getId()).delete();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();

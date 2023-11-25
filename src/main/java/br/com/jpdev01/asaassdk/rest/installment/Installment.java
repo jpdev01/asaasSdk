@@ -28,6 +28,11 @@ public class Installment {
     public static InstallmentReader reader() {
         return new InstallmentReader();
     }
+
+    public static InstallmentDeleter deleter(String id) {
+        return new InstallmentDeleter(id);
+    }
+
     public String getObject() {
         return object;
     }
