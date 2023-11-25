@@ -13,6 +13,7 @@ import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
 import br.com.jpdev01.asaassdk.utils.BillingType;
 import br.com.jpdev01.asaassdk.utils.Money;
+import br.com.jpdev01.asaassdk.utils.PaymentStatus;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
 
 import java.math.BigDecimal;
@@ -65,6 +66,12 @@ public class Teste {
                 .setInstallmentValue(Money.create(50))
                 .setDescription("Teste")
                 .create();
+
+        ResourceSet<Payment> paymentResourceSet = Payment.reader()
+                .setStatus(PaymentStatus.RECEIVED)
+                .setStartPaymentDate(new Date())
+                .setFinishDueDate(new Date())
+                .read();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();

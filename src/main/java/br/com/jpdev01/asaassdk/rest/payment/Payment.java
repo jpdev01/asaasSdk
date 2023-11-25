@@ -61,6 +61,10 @@ public class Payment {
         return new PaymentCreator();
     }
 
+    public static PaymentReader reader() {
+        return new PaymentReader();
+    }
+
     public static PaymentRefunder refunder(Long id) {
         return new PaymentRefunder(id);
     }

@@ -3,15 +3,21 @@ package br.com.jpdev01.asaassdk.rest.action;
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.http.AsaasRestClient;
 import br.com.jpdev01.asaassdk.http.Response;
+import br.com.jpdev01.asaassdk.rest.action.filter.FilterVO;
+import br.com.jpdev01.asaassdk.utils.CustomDateUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public abstract class Reader<T> {
 
     public Integer limit;
     public Long offset;
+
+    public List<FilterVO> activeFilters;
 
     public Integer getLimit() {
         return limit;
@@ -30,8 +36,6 @@ public abstract class Reader<T> {
         this.offset = offset;
         return this;
     }
-
-    public List<String> activeFilters;
 
     public ResourceSet<T> read() {
         return read(Asaas.getRestClient());
@@ -52,7 +56,17 @@ public abstract class Reader<T> {
 
     public void addFilter(String propertyName) {
         if (activeFilters == null) activeFilters = new ArrayList<>();
-        activeFilters.add(propertyName);
+        activeFilters.add(new FilterVO(
+                propertyName
+        ));
+    }
+
+    public void addFilter(String propertyName, String filterName) {
+        if (activeFilters == null) activeFilters = new ArrayList<>();
+        activeFilters.add(new FilterVO(
+                propertyName,
+                filterName
+        ));
     }
 
     private String buildFullPath() {
@@ -61,11 +75,11 @@ public abstract class Reader<T> {
             if (activeFilters == null || activeFilters.isEmpty()) return path;
 
             String pathParams = "";
-            for (String propertyName : activeFilters) {
+            for (FilterVO filterVO : activeFilters) {
                 pathParams = concatDelimiterFilter(pathParams);
-                Field field = this.getClass().getDeclaredField(propertyName);
+                Field field = this.getClass().getDeclaredField(filterVO.getPropertyName());
                 pathParams = pathParams
-                        .concat(field.getName())
+                        .concat(filterVO.getFilterKey())
                         .concat("=");
 
                 Object value = field.get(this);
@@ -75,6 +89,9 @@ public abstract class Reader<T> {
                 } else if (value instanceof Integer) {
                     pathParams = pathParams
                             .concat(value.toString());
+                } else if (value instanceof Date) {
+                    pathParams = pathParams
+                            .concat(CustomDateUtils.toString((Date) value, CustomDateUtils.DATE));
                 } else {
                     throw new IllegalStateException("Filtro não mapeado");
                 }
