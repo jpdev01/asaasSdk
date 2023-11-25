@@ -18,6 +18,6 @@ public class PaymentStatusFetcher extends Fetcher<PaymentStatusData> {
 
     @Override
     public Class<PaymentStatusData> getResourceClass() {
-        return null;
+        return PaymentStatusData.class;
     }
 }

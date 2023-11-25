@@ -3,6 +3,8 @@ package br.com.jpdev01.asaassdk.rest.payment;
 import br.com.jpdev01.asaassdk.rest.payment.children.Discount;
 import br.com.jpdev01.asaassdk.rest.payment.children.Fine;
 import br.com.jpdev01.asaassdk.rest.payment.children.Interest;
+import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
+import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationFieldFetcher;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusFetcher;
 import br.com.jpdev01.asaassdk.utils.BillingType;
 import br.com.jpdev01.asaassdk.utils.PaymentStatus;
@@ -62,6 +64,10 @@ public class Payment {
 
     public static PaymentStatusFetcher statusFetcher(String id) {
         return new PaymentStatusFetcher(id);
+    }
+
+    public static PaymentIdentificationFieldFetcher identificationFieldFetcher(String id) {
+        return new PaymentIdentificationFieldFetcher(id);
     }
 
     public String getObject() {

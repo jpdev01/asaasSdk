@@ -27,11 +27,11 @@ public enum Domain {
     }
 
     public String addVariableList(String... variables) {
-        String path = this.toString();
+        StringBuilder path = new StringBuilder(this.toString());
         for (String variable : variables) {
-            path = "/" + variable;
+            path.append("/").append(variable);
         }
-        return path;
+        return path.toString();
     }
 
     public String toString() {

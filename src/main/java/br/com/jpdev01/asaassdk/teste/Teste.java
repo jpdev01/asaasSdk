@@ -5,6 +5,7 @@ import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
 import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
+import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
 import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
@@ -88,6 +89,7 @@ public class Teste {
 //        NotificationConfig.updater(notificationConfigList.getData().get(0).getId()).setEnabled(false).update();
 //        CustomerAccount.fetcher("cus_000072683044").fetch();
         PaymentStatusData paymentStatusData = Payment.statusFetcher("pay_5196906157104118").fetch();
+        PaymentIdentificationField linhaDigitavel = Payment.identificationFieldFetcher("pay_5196906157104118").fetch();
     }
 
 }
