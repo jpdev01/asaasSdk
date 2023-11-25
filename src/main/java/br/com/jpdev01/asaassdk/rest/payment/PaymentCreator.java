@@ -23,9 +23,20 @@ public class PaymentCreator extends Creator<Payment> {
     boolean postalService;
     DiscountSetting discount;
 
+    Integer installmentCount;
+    BigDecimal installmentValue;
+
+    public String getCustomer() {
+        return customer;
+    }
+
     public PaymentCreator setCustomer(String customer) {
         this.customer = customer;
         return this;
+    }
+
+    public BillingType getBillingType() {
+        return billingType;
     }
 
     public PaymentCreator setBillingType(BillingType billingType) {
@@ -33,9 +44,17 @@ public class PaymentCreator extends Creator<Payment> {
         return this;
     }
 
+    public Date getDueDate() {
+        return dueDate;
+    }
+
     public PaymentCreator setDueDate(Date dueDate) {
         this.dueDate = dueDate;
         return this;
+    }
+
+    public BigDecimal getValue() {
+        return value;
     }
 
     public PaymentCreator setValue(BigDecimal value) {
@@ -43,9 +62,17 @@ public class PaymentCreator extends Creator<Payment> {
         return this;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public PaymentCreator setDescription(String description) {
         this.description = description;
         return this;
+    }
+
+    public String getExternalReference() {
+        return externalReference;
     }
 
     public PaymentCreator setExternalReference(String externalReference) {
@@ -53,13 +80,39 @@ public class PaymentCreator extends Creator<Payment> {
         return this;
     }
 
+    public boolean isPostalService() {
+        return postalService;
+    }
+
     public PaymentCreator setPostalService(boolean postalService) {
         this.postalService = postalService;
         return this;
     }
 
+    public DiscountSetting getDiscount() {
+        return discount;
+    }
+
     public PaymentCreator setDiscount(DiscountSetting discount) {
         this.discount = discount;
+        return this;
+    }
+
+    public Integer getInstallmentCount() {
+        return installmentCount;
+    }
+
+    public PaymentCreator setInstallmentCount(Integer installmentCount) {
+        this.installmentCount = installmentCount;
+        return this;
+    }
+
+    public BigDecimal getInstallmentValue() {
+        return installmentValue;
+    }
+
+    public PaymentCreator setInstallmentValue(BigDecimal installmentValue) {
+        this.installmentValue = installmentValue;
         return this;
     }
 

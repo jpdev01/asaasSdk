@@ -8,11 +8,13 @@ import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentific
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusFetcher;
 import br.com.jpdev01.asaassdk.utils.BillingType;
 import br.com.jpdev01.asaassdk.utils.PaymentStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Payment {
 
     @JsonProperty("object")
@@ -33,6 +35,7 @@ public class Payment {
     private Date originalDueDate;
     private Date paymentDate;
     private Date clientPaymentDate;
+    private String installment;
     private String installmentNumber;
     private String invoiceUrl;
     private String invoiceNumber;
@@ -400,6 +403,15 @@ public class Payment {
 
     public Payment setRefunds(Object refunds) {
         this.refunds = refunds;
+        return this;
+    }
+
+    public String getInstallment() {
+        return installment;
+    }
+
+    public Payment setInstallment(String installment) {
+        this.installment = installment;
         return this;
     }
 }

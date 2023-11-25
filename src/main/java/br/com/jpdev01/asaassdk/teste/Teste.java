@@ -11,7 +11,12 @@ import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
+import br.com.jpdev01.asaassdk.utils.BillingType;
+import br.com.jpdev01.asaassdk.utils.Money;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class Teste {
 
@@ -52,13 +57,14 @@ public class Teste {
 //        ResourceSet<Transfer> transferList = Transfer.reader().read();
       //  System.out.println(transfer.getValue().toString());
 
-//        Payment payment = Payment.creator()
-//                .setCustomer("cus_000050606806")
-//                .setBillingType(BillingType.PIX)
-//                .setDueDate(new Date())
-//                .setValue(Money.create(new BigDecimal(10.01)))
-//                .setDescription("Teste")
-//                .create();
+        Payment payment = Payment.creator()
+                .setCustomer("cus_000072683114")
+                .setBillingType(BillingType.PIX)
+                .setDueDate(new Date())
+                .setInstallmentCount(2)
+                .setInstallmentValue(Money.create(50))
+                .setDescription("Teste")
+                .create();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
@@ -88,8 +94,8 @@ public class Teste {
 //        ResourceSet<NotificationConfig> notificationConfigList = NotificationConfig.customerAccountReader(customerAccount.getId()).read();
 //        NotificationConfig.updater(notificationConfigList.getData().get(0).getId()).setEnabled(false).update();
 //        CustomerAccount.fetcher("cus_000072683044").fetch();
-        PaymentStatusData paymentStatusData = Payment.statusFetcher("pay_5196906157104118").fetch();
-        PaymentIdentificationField linhaDigitavel = Payment.identificationFieldFetcher("pay_5196906157104118").fetch();
+        PaymentStatusData paymentStatusData = Payment.statusFetcher("pay_9087711026766517").fetch();
+        PaymentIdentificationField linhaDigitavel = Payment.identificationFieldFetcher("pay_9087711026766517").fetch();
     }
 
 }

@@ -8,4 +8,8 @@ public class Money {
         bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
         return bigDecimal;
     }
+
+    public static BigDecimal create(double value) {
+        return create(new BigDecimal(value));
+    }
 }

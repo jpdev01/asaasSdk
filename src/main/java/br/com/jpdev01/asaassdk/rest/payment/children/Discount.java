@@ -1,14 +1,18 @@
 package br.com.jpdev01.asaassdk.rest.payment.children;
 
 import br.com.jpdev01.asaassdk.utils.DiscountType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Discount {
 
     private BigDecimal value;
     private Integer dueDateLimitDays;
     private DiscountType type;
+    private Date limitDate;
 
     public Discount() {
     }
@@ -37,4 +41,12 @@ public class Discount {
         this.type = type;
     }
 
+    public Date getLimitDate() {
+        return limitDate;
+    }
+
+    public Discount setLimitDate(Date limitDate) {
+        this.limitDate = limitDate;
+        return this;
+    }
 }
