@@ -48,6 +48,10 @@ public class PixTransaction {
         return new PixTransactionReader();
     }
 
+    public static PixTransactionCanceller canceller(String id) {
+        return new PixTransactionCanceller(id);
+    }
+
     public static PixTransactionFetcher fetcher(Object id) {
         return new PixTransactionFetcher(id);
     }

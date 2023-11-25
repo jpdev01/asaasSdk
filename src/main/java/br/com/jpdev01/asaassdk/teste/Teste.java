@@ -8,9 +8,12 @@ import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.commons.DeletedResource;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
+import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
+import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransactionCanceller;
 import br.com.jpdev01.asaassdk.utils.BillingType;
 import br.com.jpdev01.asaassdk.utils.Money;
 import br.com.jpdev01.asaassdk.utils.PaymentStatus;
+import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
 
 import java.util.Date;
 
@@ -53,26 +56,31 @@ public class Teste {
 //        ResourceSet<Transfer> transferList = Transfer.reader().read();
       //  System.out.println(transfer.getValue().toString());
 
-        Payment payment = Payment.creator()
-                .setCustomer("cus_000072683114")
-                .setBillingType(BillingType.PIX)
-                .setDueDate(new Date())
-                .setInstallmentCount(2)
-                .setInstallmentValue(Money.create(50))
-                .setDescription("Teste")
-                .create();
-
-        ResourceSet<Payment> paymentResourceSet = Payment.reader()
-                .setStatus(PaymentStatus.RECEIVED)
-                .setStartPaymentDate(new Date())
-                .setFinishDueDate(new Date())
+//        Payment payment = Payment.creator()
+//                .setCustomer("cus_000072683114")
+//                .setBillingType(BillingType.PIX)
+//                .setDueDate(new Date())
+//                .setInstallmentCount(2)
+//                .setInstallmentValue(Money.create(50))
+//                .setDescription("Teste")
+//                .create();
+//
+//        ResourceSet<Payment> paymentResourceSet = Payment.reader()
+//                .setStatus(PaymentStatus.RECEIVED)
+//                .setStartPaymentDate(new Date())
+//                .setFinishDueDate(new Date())
+//                .read();
+//
+//        DeletedResource paymentDeleted = Payment.deleter(payment.getId()).delete();
+//        payment = Payment.restorer(payment.getId()).create();
+//
+//        ResourceSet<Installment> installmentResourceSet = Installment.reader().read();
+//        DeletedResource installmentDeleted = Installment.deleter(installmentResourceSet.getData().get(0).getId()).delete();
+//        ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader().read();
+        ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader()
+                .setType(PixTransactionType.DEBIT)
                 .read();
-
-        DeletedResource paymentDeleted = Payment.deleter(payment.getId()).delete();
-        payment = Payment.restorer(payment.getId()).create();
-
-        ResourceSet<Installment> installmentResourceSet = Installment.reader().read();
-        DeletedResource installmentDeleted = Installment.deleter(installmentResourceSet.getData().get(0).getId()).delete();
+        PixTransaction cancelledPixTransaction = PixTransaction.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
