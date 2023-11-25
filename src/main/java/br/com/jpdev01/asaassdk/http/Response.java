@@ -1,10 +1,14 @@
 package br.com.jpdev01.asaassdk.http;
 
+import br.com.jpdev01.asaassdk.http.ratelimit.RateLimitData;
 import org.apache.http.Header;
+import org.apache.http.NameValuePair;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Response {
@@ -115,5 +119,28 @@ public class Response {
 
     public Header[] getHeaders() {
         return headers;
+    }
+
+    public RateLimitData getRateLimit() {
+        String limit = findHeaderValue("RateLimit-Limit");
+        if (limit != null) {
+            String remaining = findHeaderValue("RateLimit-Remaining");
+            String reset = findHeaderValue("RateLimit-Reset");
+
+            return new RateLimitData(
+                    Integer.parseInt(limit),
+                    Integer.parseInt(remaining),
+                    Integer.parseInt(reset)
+            );
+        }
+
+        return null;
+    }
+
+    private String findHeaderValue(String key) {
+        Optional<Header> headerEncontrado = Arrays.stream(headers)
+                .filter(header -> header.getName().equals(key))
+                .findFirst();
+        return headerEncontrado.map(NameValuePair::getValue).orElse(null);
     }
 }
