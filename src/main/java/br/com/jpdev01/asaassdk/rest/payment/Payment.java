@@ -3,6 +3,7 @@ package br.com.jpdev01.asaassdk.rest.payment;
 import br.com.jpdev01.asaassdk.rest.payment.children.Discount;
 import br.com.jpdev01.asaassdk.rest.payment.children.Fine;
 import br.com.jpdev01.asaassdk.rest.payment.children.Interest;
+import br.com.jpdev01.asaassdk.rest.payment.delete.PaymentDeleter;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationFieldFetcher;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusFetcher;
@@ -67,6 +68,10 @@ public class Payment {
 
     public static PaymentRefunder refunder(Long id) {
         return new PaymentRefunder(id);
+    }
+
+    public static PaymentDeleter deleter(String id) {
+        return new PaymentDeleter(id);
     }
 
     public static PaymentStatusFetcher statusFetcher(String id) {

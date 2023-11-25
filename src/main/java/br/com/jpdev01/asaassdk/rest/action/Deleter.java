@@ -15,7 +15,7 @@ public abstract class Deleter<T> {
     }
 
     public T delete(final AsaasRestClient client) {
-        Response response = client.post(getResourceUrl(), JsonUtil.toJSON(this));
+        Response response = client.delete(getResourceUrl(), JsonUtil.toJSON(this));
         return parseResponse(client, response);
     }
 

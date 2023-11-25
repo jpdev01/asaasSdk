@@ -48,7 +48,7 @@ public class ApacheHttpClient {
         }
     }
 
-    public String delete(String url) throws ConnectionException {
+    public Response delete(String url) {
         try {
             HttpDelete httpDelete = new HttpDelete(url);
             httpDelete.addHeader("access_token", accessToken);
@@ -60,7 +60,10 @@ public class ApacheHttpClient {
             }
             HttpEntity entity = response.getEntity();
             String responseBody = EntityUtils.toString(entity);
-            return responseBody;
+            return new Response(
+                    responseBody,
+                    response.getStatusLine().getStatusCode()
+            );
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
             throw new ConnectionException(500, ex.getMessage());

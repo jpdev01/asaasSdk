@@ -57,6 +57,11 @@ public class AsaasRestClient {
         return client.put(completedUrl, body);
     }
 
+    public Response delete(String url, String body) {
+        String completedUrl = Asaas.getBaseUrl() + "/" + url;
+        return client.delete(completedUrl);
+    }
+
     public static class Builder {
         private String token;
 
