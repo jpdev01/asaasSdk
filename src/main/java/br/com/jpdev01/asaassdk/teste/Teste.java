@@ -3,6 +3,7 @@ package br.com.jpdev01.asaassdk.teste;
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
+import br.com.jpdev01.asaassdk.rest.installment.Installment;
 import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.payment.delete.PaymentDeleted;
@@ -78,6 +79,8 @@ public class Teste {
 
         PaymentDeleted paymentDeleted = Payment.deleter(payment.getId()).delete();
         payment = Payment.restorer(payment.getId()).create();
+
+        ResourceSet<Installment> installmentResourceSet = Installment.reader().read();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
