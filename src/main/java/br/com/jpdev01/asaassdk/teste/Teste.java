@@ -8,6 +8,7 @@ import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.payment.delete.PaymentDeleted;
 import br.com.jpdev01.asaassdk.rest.payment.delete.PaymentDeleter;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
+import br.com.jpdev01.asaassdk.rest.payment.restore.PaymentRestorer;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
 import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
@@ -76,6 +77,7 @@ public class Teste {
                 .read();
 
         PaymentDeleted paymentDeleted = Payment.deleter(payment.getId()).delete();
+        payment = Payment.restorer(payment.getId()).create();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
