@@ -4,15 +4,13 @@ import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccount;
 import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
-import br.com.jpdev01.asaassdk.rest.customeraccount.CustomerAccountFetcher;
+import br.com.jpdev01.asaassdk.rest.payment.Payment;
+import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
 import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
-import br.com.jpdev01.asaassdk.rest.pix.qrcode.decode.PixQrCodeDecoder;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.addresskey.PixAddressKey;
 import br.com.jpdev01.asaassdk.rest.transfer.Transfer;
 import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
-
-import java.util.List;
 
 public class Teste {
 
@@ -70,25 +68,26 @@ public class Teste {
 //                .setValue(new BigDecimal("0.01")).create();
 //        System.out.printf(qrCode.id);
 
-        ResourceSet<Transfer> transferList = Transfer.reader().read();
-        PixDecodedQrCode decodedQrCode = PixDecodedQrCode.decoder()
-                        .setPayload("payload")
-                        .create();
-        PixAddressKey.reader()
-                .setStatus(PixAddressKeyStatus.ACTIVE)
-                .setLimit(1)
-                .read();
-
-        PixTransaction.reader().read();
-        PixTransaction.fetcher("bc515f74-d5c7-4bc2-93e5-3bafc0a9b15d").fetch();
-
-        CustomerAccount customerAccount = CustomerAccount.creator()
-                .setName("criado via API")
-                .setCpfCnpj("10030823005")
-                .create();
-        ResourceSet<NotificationConfig> notificationConfigList = NotificationConfig.customerAccountReader(customerAccount.getId()).read();
-        NotificationConfig.updater(notificationConfigList.getData().get(0).getId()).setEnabled(false).update();
-        CustomerAccount.fetcher("cus_000072683044").fetch();
+//        ResourceSet<Transfer> transferList = Transfer.reader().read();
+//        PixDecodedQrCode decodedQrCode = PixDecodedQrCode.decoder()
+//                        .setPayload("payload")
+//                        .create();
+//        PixAddressKey.reader()
+//                .setStatus(PixAddressKeyStatus.ACTIVE)
+//                .setLimit(1)
+//                .read();
+//
+//        PixTransaction.reader().read();
+//        PixTransaction.fetcher("bc515f74-d5c7-4bc2-93e5-3bafc0a9b15d").fetch();
+//
+//        CustomerAccount customerAccount = CustomerAccount.creator()
+//                .setName("criado via API")
+//                .setCpfCnpj("10030823005")
+//                .create();
+//        ResourceSet<NotificationConfig> notificationConfigList = NotificationConfig.customerAccountReader(customerAccount.getId()).read();
+//        NotificationConfig.updater(notificationConfigList.getData().get(0).getId()).setEnabled(false).update();
+//        CustomerAccount.fetcher("cus_000072683044").fetch();
+        PaymentStatusData paymentStatusData = Payment.statusFetcher("pay_5196906157104118").fetch();
     }
 
 }

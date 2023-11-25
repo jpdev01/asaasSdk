@@ -1,5 +1,7 @@
 package br.com.jpdev01.asaassdk.http;
 
+import java.util.List;
+
 public enum Domain {
 
     TRANSFER("transfers"),
@@ -11,7 +13,8 @@ public enum Domain {
     DECODE_PIX_QR_CODE("pix/qrCodes/decode"),
     CUSTOMER_ACCOUNT("customers"),
     NOTIFICATION("notifications"),
-    CUSTOMER_ACCOUNT_NOTIFICATIONS("customers/$id/notifications");
+    CUSTOMER_ACCOUNT_NOTIFICATIONS("customers/$id/notifications"),
+    PAYMENT_STATUS("payments/$id/status");
 
     private final String value;
 
@@ -21,6 +24,14 @@ public enum Domain {
 
     public String addPathVariable(String value) {
         return this.toString() + "/" + value;
+    }
+
+    public String addVariableList(String... variables) {
+        String path = this.toString();
+        for (String variable : variables) {
+            path = "/" + variable;
+        }
+        return path;
     }
 
     public String toString() {

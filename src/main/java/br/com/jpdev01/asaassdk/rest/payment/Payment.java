@@ -3,10 +3,13 @@ package br.com.jpdev01.asaassdk.rest.payment;
 import br.com.jpdev01.asaassdk.rest.payment.children.Discount;
 import br.com.jpdev01.asaassdk.rest.payment.children.Fine;
 import br.com.jpdev01.asaassdk.rest.payment.children.Interest;
+import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusFetcher;
 import br.com.jpdev01.asaassdk.utils.BillingType;
+import br.com.jpdev01.asaassdk.utils.PaymentStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Payment {
 
@@ -23,11 +26,11 @@ public class Payment {
     private String description;
     private BillingType billingType;
     private String pixTransaction;
-    private String status;
-    private String dueDate;
-    private String originalDueDate;
-    private String paymentDate;
-    private String clientPaymentDate;
+    private PaymentStatus status;
+    private Date dueDate;
+    private Date originalDueDate;
+    private Date paymentDate;
+    private Date clientPaymentDate;
     private String installmentNumber;
     private String invoiceUrl;
     private String invoiceNumber;
@@ -55,6 +58,10 @@ public class Payment {
 
     public static PaymentRefunder refunder(Long id) {
         return new PaymentRefunder(id);
+    }
+
+    public static PaymentStatusFetcher statusFetcher(String id) {
+        return new PaymentStatusFetcher(id);
     }
 
     public String getObject() {
@@ -165,47 +172,47 @@ public class Payment {
         return this;
     }
 
-    public String getStatus() {
+    public PaymentStatus getStatus() {
         return status;
     }
 
-    public Payment setStatus(String status) {
+    public Payment setStatus(PaymentStatus status) {
         this.status = status;
         return this;
     }
 
-    public String getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public Payment setDueDate(String dueDate) {
+    public Payment setDueDate(Date dueDate) {
         this.dueDate = dueDate;
         return this;
     }
 
-    public String getOriginalDueDate() {
+    public Date getOriginalDueDate() {
         return originalDueDate;
     }
 
-    public Payment setOriginalDueDate(String originalDueDate) {
+    public Payment setOriginalDueDate(Date originalDueDate) {
         this.originalDueDate = originalDueDate;
         return this;
     }
 
-    public String getPaymentDate() {
+    public Date getPaymentDate() {
         return paymentDate;
     }
 
-    public Payment setPaymentDate(String paymentDate) {
+    public Payment setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
         return this;
     }
 
-    public String getClientPaymentDate() {
+    public Date getClientPaymentDate() {
         return clientPaymentDate;
     }
 
-    public Payment setClientPaymentDate(String clientPaymentDate) {
+    public Payment setClientPaymentDate(Date clientPaymentDate) {
         this.clientPaymentDate = clientPaymentDate;
         return this;
     }
