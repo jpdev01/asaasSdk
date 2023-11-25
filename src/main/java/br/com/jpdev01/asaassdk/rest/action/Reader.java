@@ -7,6 +7,7 @@ import br.com.jpdev01.asaassdk.rest.action.filter.FilterVO;
 import br.com.jpdev01.asaassdk.utils.CustomDateUtils;
 
 import java.lang.reflect.Field;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -79,7 +80,7 @@ public abstract class Reader<T> {
                 pathParams = concatDelimiterFilter(pathParams);
                 Field field = this.getClass().getDeclaredField(filterVO.getPropertyName());
                 pathParams = pathParams
-                        .concat(filterVO.getFilterKey())
+                        .concat(URLEncoder.encode(filterVO.getFilterKey()))
                         .concat("=");
 
                 Object value = field.get(this);
