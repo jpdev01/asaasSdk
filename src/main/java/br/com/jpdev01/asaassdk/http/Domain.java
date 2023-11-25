@@ -17,7 +17,8 @@ public enum Domain {
     CUSTOMER_ACCOUNT_NOTIFICATIONS("customers/$id/notifications"),
     PAYMENT_STATUS("payments/$id/status"),
     PAYMENT_RESTORE("payments/$id/restore"),
-    INSTALLMENT("installments");
+    INSTALLMENT("installments"),
+    FINANCE_BALANCE("finance/balance");
 
     private final String value;
 

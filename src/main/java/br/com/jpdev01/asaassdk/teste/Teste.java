@@ -2,6 +2,7 @@ package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
+import br.com.jpdev01.asaassdk.rest.finance.FinanceBalance;
 import br.com.jpdev01.asaassdk.rest.installment.Installment;
 import br.com.jpdev01.asaassdk.rest.installment.InstallmentDeleter;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
@@ -77,10 +78,11 @@ public class Teste {
 //        ResourceSet<Installment> installmentResourceSet = Installment.reader().read();
 //        DeletedResource installmentDeleted = Installment.deleter(installmentResourceSet.getData().get(0).getId()).delete();
 //        ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader().read();
-        ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader()
-                .setType(PixTransactionType.DEBIT)
-                .read();
-        PixTransaction cancelledPixTransaction = PixTransaction.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
+//        ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader()
+//                .setType(PixTransactionType.DEBIT)
+//                .read();
+//        PixTransaction cancelledPixTransaction = PixTransaction.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
+        FinanceBalance financeBalance = FinanceBalance.fetcher().fetch();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
