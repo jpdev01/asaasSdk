@@ -1,4 +1,4 @@
-package br.com.jpdev01.asaassdk.teste;
+package br.com.jpdev01.asaassdk.examples;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
@@ -7,7 +7,7 @@ import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
 
-public class Teste {
+public class Examples {
 
     public static void main(String[] args) {
         Asaas.init("");
