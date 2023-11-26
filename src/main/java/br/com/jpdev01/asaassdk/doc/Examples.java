@@ -1,4 +1,4 @@
-package br.com.jpdev01.asaassdk.examples;
+package br.com.jpdev01.asaassdk.doc;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
@@ -9,7 +9,6 @@ import br.com.jpdev01.asaassdk.rest.finance.FinanceBalance;
 import br.com.jpdev01.asaassdk.rest.financialtransaction.FinancialTransaction;
 import br.com.jpdev01.asaassdk.rest.installment.Installment;
 import br.com.jpdev01.asaassdk.rest.invoice.Invoice;
-import br.com.jpdev01.asaassdk.rest.invoice.InvoiceCreator;
 import br.com.jpdev01.asaassdk.rest.invoice.Taxes;
 import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
