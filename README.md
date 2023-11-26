@@ -2,7 +2,7 @@
 
 SDK não oficial www.asaas.com
 
-## Documentação
+## :closed_book: Documentação
 https://github.com/jpdev01/asaasSdk/wiki
 
 ## Usando o SDK
