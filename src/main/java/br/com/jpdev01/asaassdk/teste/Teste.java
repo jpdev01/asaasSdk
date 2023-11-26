@@ -11,6 +11,7 @@ import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentific
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
 import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLink;
 import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLinkCreator;
+import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLinkFetcher;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransactionCanceller;
 import br.com.jpdev01.asaassdk.utils.BillingType;
@@ -104,6 +105,8 @@ public class Teste {
                 .setDueDateLimitDays(10)
                 .setMaxInstallmentCount(2)
                 .update();
+
+        PaymentLink link = PaymentLink.fetcher("725104409743").fetch();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
