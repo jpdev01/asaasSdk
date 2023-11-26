@@ -7,9 +7,9 @@ import br.com.jpdev01.asaassdk.rest.action.Reader;
 public class PaymentLinkReader extends Reader<PaymentLink> {
 
 
-    Boolean active;
-    Boolean includeDeleted;
-    String name;
+    public Boolean active;
+    public Boolean includeDeleted;
+    public String name;
 
     public PaymentLinkReader setActive(Boolean active) {
         addFilter("active");
