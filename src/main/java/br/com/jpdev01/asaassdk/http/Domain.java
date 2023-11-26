@@ -19,7 +19,8 @@ public enum Domain {
     PAYMENT_RESTORE("payments/$id/restore"),
     INSTALLMENT("installments"),
     FINANCE_BALANCE("finance/balance"),
-    PAYMENT_LINK("paymentLinks");
+    PAYMENT_LINK("paymentLinks"),
+    BILL("bill");
 
     private final String value;
 

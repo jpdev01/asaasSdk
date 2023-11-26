@@ -2,6 +2,7 @@ package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
+import br.com.jpdev01.asaassdk.rest.bill.Bill;
 import br.com.jpdev01.asaassdk.rest.finance.FinanceBalance;
 import br.com.jpdev01.asaassdk.rest.installment.Installment;
 import br.com.jpdev01.asaassdk.rest.installment.InstallmentDeleter;
@@ -113,6 +114,10 @@ public class Teste {
         DeletedResource deletedPaymentLink = PaymentLink
                 .deleter("725104409743")
                 .delete();
+
+        Bill bill = Bill.creator()
+                .setIdentificationField("25794150099003551916515000211407100000000000000")
+                .create();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
