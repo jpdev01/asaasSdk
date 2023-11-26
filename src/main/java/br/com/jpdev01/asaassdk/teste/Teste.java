@@ -9,10 +9,13 @@ import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.commons.DeletedResource;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
+import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLink;
+import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLinkCreator;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
 import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransactionCanceller;
 import br.com.jpdev01.asaassdk.utils.BillingType;
 import br.com.jpdev01.asaassdk.utils.Money;
+import br.com.jpdev01.asaassdk.utils.PaymentLinkChargeType;
 import br.com.jpdev01.asaassdk.utils.PaymentStatus;
 import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
 
@@ -83,6 +86,15 @@ public class Teste {
 //                .read();
 //        PixTransaction cancelledPixTransaction = PixTransaction.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
         FinanceBalance financeBalance = FinanceBalance.fetcher().fetch();
+
+        PaymentLink paymentLink = PaymentLink.creator()
+                .setName("name")
+                .setBillingType(BillingType.PIX)
+                .setChargeType(PaymentLinkChargeType.INSTALLMENT)
+                .setEndDate(new Date())
+                .setDueDateLimitDays(10)
+                .setMaxInstallmentCount(2)
+                .create();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
