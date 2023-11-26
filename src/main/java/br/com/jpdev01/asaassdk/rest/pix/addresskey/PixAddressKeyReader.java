@@ -2,7 +2,7 @@ package br.com.jpdev01.asaassdk.rest.pix.addresskey;
 
 import br.com.jpdev01.asaassdk.http.Domain;
 import br.com.jpdev01.asaassdk.rest.action.Reader;
-import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixAddressKeyStatus;
 
 public class PixAddressKeyReader extends Reader<PixAddressKey> {
 

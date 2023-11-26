@@ -3,7 +3,7 @@ package br.com.jpdev01.asaassdk.rest.paymentlink;
 import br.com.jpdev01.asaassdk.http.Domain;
 import br.com.jpdev01.asaassdk.rest.action.Creator;
 import br.com.jpdev01.asaassdk.utils.BillingType;
-import br.com.jpdev01.asaassdk.utils.PaymentLinkChargeType;
+import br.com.jpdev01.asaassdk.rest.payment.enums.PaymentLinkChargeType;
 
 import java.math.BigDecimal;
 import java.util.Date;

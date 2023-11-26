@@ -1,9 +1,9 @@
 package br.com.jpdev01.asaassdk.rest.pix.transaction;
 
-import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
-import br.com.jpdev01.asaassdk.utils.pix.PixTransactionOriginType;
-import br.com.jpdev01.asaassdk.utils.pix.PixTransactionStatus;
-import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixAddressKeyType;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixTransactionOriginType;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixTransactionStatus;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixTransactionType;
 
 import java.math.BigDecimal;
 import java.util.Date;

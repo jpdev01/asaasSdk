@@ -1,7 +1,7 @@
 package br.com.jpdev01.asaassdk.rest.paymentlink;
 
 import br.com.jpdev01.asaassdk.utils.BillingType;
-import br.com.jpdev01.asaassdk.utils.PaymentLinkChargeType;
+import br.com.jpdev01.asaassdk.rest.payment.enums.PaymentLinkChargeType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Date;

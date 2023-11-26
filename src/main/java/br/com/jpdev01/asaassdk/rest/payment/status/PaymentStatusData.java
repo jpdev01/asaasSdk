@@ -1,6 +1,6 @@
 package br.com.jpdev01.asaassdk.rest.payment.status;
 
-import br.com.jpdev01.asaassdk.utils.PaymentStatus;
+import br.com.jpdev01.asaassdk.rest.payment.enums.PaymentStatus;
 
 public class PaymentStatusData {
 

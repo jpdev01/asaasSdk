@@ -1,7 +1,7 @@
 package br.com.jpdev01.asaassdk.rest.pix.addresskey;
 
-import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyStatus;
-import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixAddressKeyStatus;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixAddressKeyType;
 
 public class PixAddressKey {
 

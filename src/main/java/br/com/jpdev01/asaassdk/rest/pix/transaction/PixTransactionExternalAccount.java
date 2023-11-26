@@ -1,7 +1,7 @@
 package br.com.jpdev01.asaassdk.rest.pix.transaction;
 
 import br.com.jpdev01.asaassdk.utils.PersonType;
-import br.com.jpdev01.asaassdk.utils.pix.PixAccountType;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixAccountType;
 
 public class PixTransactionExternalAccount {
 

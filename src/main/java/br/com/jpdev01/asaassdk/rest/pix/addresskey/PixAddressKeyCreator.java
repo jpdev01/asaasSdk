@@ -2,7 +2,7 @@ package br.com.jpdev01.asaassdk.rest.pix.addresskey;
 
 import br.com.jpdev01.asaassdk.http.Domain;
 import br.com.jpdev01.asaassdk.rest.action.Creator;
-import br.com.jpdev01.asaassdk.utils.pix.PixAddressKeyType;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixAddressKeyType;
 
 public class PixAddressKeyCreator extends Creator<PixAddressKey> {
 

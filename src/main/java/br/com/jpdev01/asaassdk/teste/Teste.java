@@ -2,27 +2,10 @@ package br.com.jpdev01.asaassdk.teste;
 
 import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
-import br.com.jpdev01.asaassdk.rest.bill.Bill;
-import br.com.jpdev01.asaassdk.rest.finance.FinanceBalance;
 import br.com.jpdev01.asaassdk.rest.financialtransaction.FinancialTransaction;
-import br.com.jpdev01.asaassdk.rest.installment.Installment;
-import br.com.jpdev01.asaassdk.rest.installment.InstallmentDeleter;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
-import br.com.jpdev01.asaassdk.rest.commons.DeletedResource;
 import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusData;
-import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLink;
-import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLinkCreator;
-import br.com.jpdev01.asaassdk.rest.paymentlink.PaymentLinkFetcher;
-import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransaction;
-import br.com.jpdev01.asaassdk.rest.pix.transaction.PixTransactionCanceller;
-import br.com.jpdev01.asaassdk.utils.BillingType;
-import br.com.jpdev01.asaassdk.utils.Money;
-import br.com.jpdev01.asaassdk.utils.PaymentLinkChargeType;
-import br.com.jpdev01.asaassdk.utils.PaymentStatus;
-import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
-
-import java.util.Date;
 
 public class Teste {
 

@@ -3,7 +3,7 @@ package br.com.jpdev01.asaassdk.rest.payment;
 import br.com.jpdev01.asaassdk.http.Domain;
 import br.com.jpdev01.asaassdk.rest.action.Reader;
 import br.com.jpdev01.asaassdk.utils.BillingType;
-import br.com.jpdev01.asaassdk.utils.PaymentStatus;
+import br.com.jpdev01.asaassdk.rest.payment.enums.PaymentStatus;
 
 import java.util.Date;
 

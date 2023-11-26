@@ -2,8 +2,8 @@ package br.com.jpdev01.asaassdk.rest.pix.transaction;
 
 import br.com.jpdev01.asaassdk.http.Domain;
 import br.com.jpdev01.asaassdk.rest.action.Reader;
-import br.com.jpdev01.asaassdk.utils.pix.PixTransactionStatus;
-import br.com.jpdev01.asaassdk.utils.pix.PixTransactionType;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixTransactionStatus;
+import br.com.jpdev01.asaassdk.rest.pix.enums.PixTransactionType;
 
 public class PixTransactionReader extends Reader<PixTransaction> {
 

@@ -8,7 +8,7 @@ import br.com.jpdev01.asaassdk.rest.payment.identificationfield.PaymentIdentific
 import br.com.jpdev01.asaassdk.rest.payment.restore.PaymentRestorer;
 import br.com.jpdev01.asaassdk.rest.payment.status.PaymentStatusFetcher;
 import br.com.jpdev01.asaassdk.utils.BillingType;
-import br.com.jpdev01.asaassdk.utils.PaymentStatus;
+import br.com.jpdev01.asaassdk.rest.payment.enums.PaymentStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

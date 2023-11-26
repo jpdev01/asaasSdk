@@ -1,4 +1,4 @@
-package br.com.jpdev01.asaassdk.utils.pix;
+package br.com.jpdev01.asaassdk.rest.pix.enums;
 
 public enum PixAddressKeyStatus {
 
