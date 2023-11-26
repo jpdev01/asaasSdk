@@ -107,6 +107,9 @@ public class Teste {
                 .update();
 
         PaymentLink link = PaymentLink.fetcher("725104409743").fetch();
+        ResourceSet<PaymentLink> paymentLinkResourceSet = PaymentLink
+                .reader()
+                .read();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();

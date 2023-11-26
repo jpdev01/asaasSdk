@@ -37,6 +37,10 @@ public class PaymentLink {
         return new PaymentLinkFetcher(id);
     }
 
+    public static PaymentLinkReader reader() {
+        return new PaymentLinkReader();
+    }
+
     public String getId() {
         return id;
     }
