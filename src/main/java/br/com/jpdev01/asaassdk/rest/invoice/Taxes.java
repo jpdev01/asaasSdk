@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Taxes {
 
     Boolean retainIss;
-    Boolean iss;
+    BigDecimal iss;
     BigDecimal cofins;
     BigDecimal csll;
     BigDecimal inss;
@@ -21,11 +21,11 @@ public class Taxes {
         return this;
     }
 
-    public Boolean getIss() {
+    public BigDecimal getIss() {
         return iss;
     }
 
-    public Taxes setIss(Boolean iss) {
+    public Taxes setIss(BigDecimal iss) {
         this.iss = iss;
         return this;
     }

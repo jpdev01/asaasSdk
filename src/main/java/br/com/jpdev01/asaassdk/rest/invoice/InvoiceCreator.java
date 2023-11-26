@@ -19,6 +19,7 @@ public class InvoiceCreator extends Creator<Invoice> {
     Date effectiveDate;
     String municipalServiceId;
     String municipalServiceCode;
+    String municipalServiceName;
     Boolean updatePayment;
     Taxes taxes;
 
@@ -127,6 +128,15 @@ public class InvoiceCreator extends Creator<Invoice> {
 
     public InvoiceCreator setUpdatePayment(Boolean updatePayment) {
         this.updatePayment = updatePayment;
+        return this;
+    }
+
+    public String getMunicipalServiceName() {
+        return municipalServiceName;
+    }
+
+    public InvoiceCreator setMunicipalServiceName(String municipalServiceName) {
+        this.municipalServiceName = municipalServiceName;
         return this;
     }
 

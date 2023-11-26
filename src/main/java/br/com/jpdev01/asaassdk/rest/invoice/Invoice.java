@@ -39,6 +39,10 @@ public class Invoice {
         return new InvoiceFetcher(id);
     }
 
+    public static InvoiceReader reader() {
+        return new InvoiceReader();
+    }
+
     public String getObject() {
         return object;
     }
