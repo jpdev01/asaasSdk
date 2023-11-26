@@ -35,6 +35,10 @@ public class Invoice {
         return new InvoiceCreator();
     }
 
+    public static InvoiceFetcher fetcher(String id) {
+        return new InvoiceFetcher(id);
+    }
+
     public String getObject() {
         return object;
     }
