@@ -21,7 +21,8 @@ public enum Domain {
     FINANCE_BALANCE("finance/balance"),
     PAYMENT_LINK("paymentLinks"),
     BILL("bill"),
-    FINANCIAL_TRANSACTION("financialTransactions");
+    FINANCIAL_TRANSACTION("financialTransactions"),
+    INVOICE("invoices");
 
     private final String value;
 
