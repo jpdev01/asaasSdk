@@ -20,7 +20,8 @@ public enum Domain {
     INSTALLMENT("installments"),
     FINANCE_BALANCE("finance/balance"),
     PAYMENT_LINK("paymentLinks"),
-    BILL("bill");
+    BILL("bill"),
+    FINANCIAL_TRANSACTION("financialTransactions");
 
     private final String value;
 

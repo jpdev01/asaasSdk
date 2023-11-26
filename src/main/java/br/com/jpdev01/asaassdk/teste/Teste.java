@@ -4,6 +4,7 @@ import br.com.jpdev01.asaassdk.http.Asaas;
 import br.com.jpdev01.asaassdk.rest.action.ResourceSet;
 import br.com.jpdev01.asaassdk.rest.bill.Bill;
 import br.com.jpdev01.asaassdk.rest.finance.FinanceBalance;
+import br.com.jpdev01.asaassdk.rest.financialtransaction.FinancialTransaction;
 import br.com.jpdev01.asaassdk.rest.installment.Installment;
 import br.com.jpdev01.asaassdk.rest.installment.InstallmentDeleter;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
@@ -87,37 +88,41 @@ public class Teste {
 //                .setType(PixTransactionType.DEBIT)
 //                .read();
 //        PixTransaction cancelledPixTransaction = PixTransaction.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
-        FinanceBalance financeBalance = FinanceBalance.fetcher().fetch();
+//        FinanceBalance financeBalance = FinanceBalance.fetcher().fetch();
+//
+//        PaymentLink paymentLink = PaymentLink.creator()
+//                .setName("name")
+//                .setBillingType(BillingType.PIX)
+//                .setChargeType(PaymentLinkChargeType.INSTALLMENT)
+//                .setEndDate(new Date())
+//                .setDueDateLimitDays(10)
+//                .setMaxInstallmentCount(2)
+//                .create();
+//
+//        PaymentLink updated = PaymentLink.updater(paymentLink.getId())
+//                .setName("name")
+//                .setBillingType(BillingType.PIX)
+//                .setChargeType(PaymentLinkChargeType.INSTALLMENT)
+//                .setEndDate(new Date())
+//                .setDueDateLimitDays(10)
+//                .setMaxInstallmentCount(2)
+//                .update();
 
-        PaymentLink paymentLink = PaymentLink.creator()
-                .setName("name")
-                .setBillingType(BillingType.PIX)
-                .setChargeType(PaymentLinkChargeType.INSTALLMENT)
-                .setEndDate(new Date())
-                .setDueDateLimitDays(10)
-                .setMaxInstallmentCount(2)
-                .create();
-
-        PaymentLink updated = PaymentLink.updater(paymentLink.getId())
-                .setName("name")
-                .setBillingType(BillingType.PIX)
-                .setChargeType(PaymentLinkChargeType.INSTALLMENT)
-                .setEndDate(new Date())
-                .setDueDateLimitDays(10)
-                .setMaxInstallmentCount(2)
-                .update();
-
-        PaymentLink link = PaymentLink.fetcher("725104409743").fetch();
-        ResourceSet<PaymentLink> paymentLinkResourceSet = PaymentLink
+        ResourceSet<FinancialTransaction> financialTransactionResourceSet = FinancialTransaction
                 .reader()
+                .setTransferId("transferId")
                 .read();
-        DeletedResource deletedPaymentLink = PaymentLink
-                .deleter("725104409743")
-                .delete();
-
-        Bill bill = Bill.creator()
-                .setIdentificationField("25794150099003551916515000211407100000000000000")
-                .create();
+//        PaymentLink link = PaymentLink.fetcher("725104409743").fetch();
+//        ResourceSet<PaymentLink> paymentLinkResourceSet = PaymentLink
+//                .reader()
+//                .read();
+//        DeletedResource deletedPaymentLink = PaymentLink
+//                .deleter("725104409743")
+//                .delete();
+//
+//        Bill bill = Bill.creator()
+//                .setIdentificationField("25794150099003551916515000211407100000000000000")
+//                .create();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
