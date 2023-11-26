@@ -41,6 +41,10 @@ public class PaymentLink {
         return new PaymentLinkReader();
     }
 
+    public static PaymentLinkDeleter deleter(String id) {
+        return new PaymentLinkDeleter(id);
+    }
+
     public String getId() {
         return id;
     }

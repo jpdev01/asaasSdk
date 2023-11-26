@@ -110,6 +110,9 @@ public class Teste {
         ResourceSet<PaymentLink> paymentLinkResourceSet = PaymentLink
                 .reader()
                 .read();
+        DeletedResource deletedPaymentLink = PaymentLink
+                .deleter("725104409743")
+                .delete();
 
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
