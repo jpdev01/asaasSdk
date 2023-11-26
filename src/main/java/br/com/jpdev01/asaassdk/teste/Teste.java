@@ -96,6 +96,15 @@ public class Teste {
                 .setMaxInstallmentCount(2)
                 .create();
 
+        PaymentLink updated = PaymentLink.updater(paymentLink.getId())
+                .setName("name")
+                .setBillingType(BillingType.PIX)
+                .setChargeType(PaymentLinkChargeType.INSTALLMENT)
+                .setEndDate(new Date())
+                .setDueDateLimitDays(10)
+                .setMaxInstallmentCount(2)
+                .update();
+
         // PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
         // PixAddressKey.reader().read();
 //        PixQrCode qrCode = PixQrCode

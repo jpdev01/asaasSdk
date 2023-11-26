@@ -29,6 +29,10 @@ public class PaymentLink {
         return new PaymentLinkCreator();
     }
 
+    public static PaymentLinkUpdater updater(String id) {
+        return new PaymentLinkUpdater(id);
+    }
+
     public String getId() {
         return id;
     }
