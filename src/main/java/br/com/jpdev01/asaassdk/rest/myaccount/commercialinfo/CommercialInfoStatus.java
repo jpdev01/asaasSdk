@@ -1,4 +1,4 @@
-package br.com.jpdev01.asaassdk.rest.myaccount;
+package br.com.jpdev01.asaassdk.rest.myaccount.commercialinfo;
 
 public enum CommercialInfoStatus {
 
