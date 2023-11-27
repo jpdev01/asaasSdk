@@ -10,6 +10,7 @@ import br.com.jpdev01.asaassdk.rest.financialtransaction.FinancialTransaction;
 import br.com.jpdev01.asaassdk.rest.installment.Installment;
 import br.com.jpdev01.asaassdk.rest.invoice.Invoice;
 import br.com.jpdev01.asaassdk.rest.invoice.Taxes;
+import br.com.jpdev01.asaassdk.rest.myaccount.CommercialInfo;
 import br.com.jpdev01.asaassdk.rest.notification.NotificationConfig;
 import br.com.jpdev01.asaassdk.rest.payment.Payment;
 import br.com.jpdev01.asaassdk.rest.payment.enums.PaymentLinkChargeType;
@@ -215,5 +216,9 @@ public class Examples {
     private void installment() {
         ResourceSet<Installment> installmentResourceSet = Installment.reader().read();
         DeletedResource installmentDeleted = Installment.deleter(installmentResourceSet.getData().get(0).getId()).delete();
+    }
+
+    private static void commercialInfo() {
+        CommercialInfo commercialInfo = CommercialInfo.fetcher().fetch();
     }
 }
