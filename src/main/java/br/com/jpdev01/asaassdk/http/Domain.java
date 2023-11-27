@@ -24,7 +24,8 @@ public enum Domain {
     FINANCIAL_TRANSACTION("financialTransactions"),
     INVOICE("invoices"),
     COMMERCIAL_INFO("myAccount/commercialInfo"),
-    ACCOUNT_NUMBER("myAccount/accountNumber");
+    ACCOUNT_NUMBER("myAccount/accountNumber"),
+    FEE("myAccount/fees");
 
     private final String value;
 

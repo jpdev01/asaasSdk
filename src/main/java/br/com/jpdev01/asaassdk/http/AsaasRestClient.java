@@ -1,5 +1,6 @@
 package br.com.jpdev01.asaassdk.http;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleDeserializers;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -91,6 +92,7 @@ public class AsaasRestClient {
         module.setDeserializers(deserializers);
 
         mapper.registerModule(module);
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return mapper;
     }
 
