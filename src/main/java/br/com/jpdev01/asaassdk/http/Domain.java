@@ -23,7 +23,8 @@ public enum Domain {
     BILL("bill"),
     FINANCIAL_TRANSACTION("financialTransactions"),
     INVOICE("invoices"),
-    COMMERCIAL_INFO("myAccount/commercialInfo");
+    COMMERCIAL_INFO("myAccount/commercialInfo"),
+    ACCOUNT_NUMBER("myAccount/accountNumber");
 
     private final String value;
 

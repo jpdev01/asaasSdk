@@ -224,4 +224,8 @@ public class Examples {
                 .setSite("https://yourSite.com.br")
                 .update();
     }
+
+    private static void accountNumber() {
+        AccountNumber accountNumber = AccountNumber.fetcher().fetch();
+    }
 }
