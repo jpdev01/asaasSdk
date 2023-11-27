@@ -1,4 +1,4 @@
-package br.com.jpdev01.asaassdk.rest.myaccount;
+package br.com.jpdev01.asaassdk.rest.myaccount.commercialinfo;
 
 import br.com.jpdev01.asaassdk.http.Domain;
 import br.com.jpdev01.asaassdk.rest.action.Fetcher;
