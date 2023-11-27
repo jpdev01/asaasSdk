@@ -232,4 +232,8 @@ public class Examples {
     private static void fee() {
         AccountFee myFees = AccountFee.fetcher().fetch();
     }
+
+    private static void myStatus() {
+        MyAccountStatus myAccountStatus = MyAccountStatus.fetcher().fetch();
+    }
 }

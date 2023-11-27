@@ -25,7 +25,8 @@ public enum Domain {
     INVOICE("invoices"),
     COMMERCIAL_INFO("myAccount/commercialInfo"),
     ACCOUNT_NUMBER("myAccount/accountNumber"),
-    FEE("myAccount/fees");
+    FEE("myAccount/fees"),
+    STATUS("myAccount/status");
 
     private final String value;
 
