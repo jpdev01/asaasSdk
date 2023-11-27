@@ -220,5 +220,8 @@ public class Examples {
 
     private static void commercialInfo() {
         CommercialInfo commercialInfo = CommercialInfo.fetcher().fetch();
+        CommercialInfo updatedCommercialInfo = CommercialInfo.updater()
+                .setSite("https://yourSite.com.br")
+                .update();
     }
 }

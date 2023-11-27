@@ -27,6 +27,10 @@ public class CommercialInfo {
         return new CommercialInfoFetcher();
     }
 
+    public static CommercialInfoUpdater updater() {
+        return new CommercialInfoUpdater();
+    }
+
     public CommercialInfoStatus getStatus() {
         return status;
     }
