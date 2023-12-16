@@ -18,16 +18,16 @@ public abstract class Creator<T> {
 
     public T create(final AsaasRestClient client) {
         Response response = client.post(getResourceUrl(), JsonUtil.toJSON(this));
-        return parseResponse(response);
+        return parseResponse(client, response);
     }
 
-    private T parseResponse(Response response) {
+    private T parseResponse(AsaasRestClient client, Response response) {
         if (response.getStatusCode() == 400) {
             throw new ApiException(400, response.getContent());
         }
 
         try {
-            return objectMapper.readValue(response.getContent(), getResourceClass());
+            return client.getObjectMapper().readValue(response.getContent(), getResourceClass());
         } catch (Exception e) {
             throw new RuntimeException("Error parsing response", e);
         }
