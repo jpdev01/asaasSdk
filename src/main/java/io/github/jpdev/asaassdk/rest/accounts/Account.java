@@ -31,6 +31,10 @@ public class Account {
         return new AccountCreator();
     }
 
+    public static AccountFetcher fetcher(String id) {
+        return new AccountFetcher(id);
+    }
+
     public String getObject() {
         return object;
     }
