@@ -6,11 +6,7 @@ import io.github.jpdev.asaassdk.utils.JsonUtil;
 import io.github.jpdev.asaassdk.http.AsaasRestClient;
 import io.github.jpdev.asaassdk.http.Response;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public abstract class Creator<T> {
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public T create() {
         return create(Asaas.getRestClient());
@@ -34,5 +30,6 @@ public abstract class Creator<T> {
     }
 
     public abstract String getResourceUrl();
+
     public abstract Class<T> getResourceClass();
 }
