@@ -18,6 +18,7 @@ public class ApacheHttpClient {
 
     private final String accessToken;
     private final CloseableHttpClient httpclient;
+    private final static String ACCESS_TOKEN_HEADER = "access_token";
 
     public ApacheHttpClient(String acessToken) {
         this.accessToken = acessToken;
@@ -27,7 +28,7 @@ public class ApacheHttpClient {
     public Response get(String url) throws ConnectionException {
         try {
             HttpGet httpGet = new HttpGet(url);
-            httpGet.addHeader("access_token", accessToken);
+            httpGet.addHeader(ACCESS_TOKEN_HEADER, accessToken);
             CloseableHttpResponse response = httpclient.execute(httpGet);
 
             StatusLine status = response.getStatusLine();
@@ -51,7 +52,7 @@ public class ApacheHttpClient {
     public Response delete(String url) {
         try {
             HttpDelete httpDelete = new HttpDelete(url);
-            httpDelete.addHeader("access_token", accessToken);
+            httpDelete.addHeader(ACCESS_TOKEN_HEADER, accessToken);
             CloseableHttpResponse response = httpclient.execute(httpDelete);
 
             StatusLine status = response.getStatusLine();
@@ -73,7 +74,7 @@ public class ApacheHttpClient {
     public Response post(String url, String body) throws ConnectionException {
         try {
             HttpPost httpPost = new HttpPost(url);
-            httpPost.addHeader("access_token", accessToken);
+            httpPost.addHeader(ACCESS_TOKEN_HEADER, accessToken);
 
             StringEntity entity = new StringEntity(body);
             httpPost.setEntity(entity);
@@ -99,7 +100,7 @@ public class ApacheHttpClient {
     public Response put(String url, String body) throws ConnectionException {
         try {
             HttpPut httpPost = new HttpPut(url);
-            httpPost.addHeader("access_token", accessToken);
+            httpPost.addHeader(ACCESS_TOKEN_HEADER, accessToken);
 
             StringEntity entity = new StringEntity(body);
             httpPost.setEntity(entity);
