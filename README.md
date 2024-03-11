@@ -1,6 +1,7 @@
 # ASAAS SDK
 
 SDK não oficial www.asaas.com
+author: @jpdev01
 
 ## :closed_book: Documentação
 https://github.com/jpdev01/asaasSdk/wiki
