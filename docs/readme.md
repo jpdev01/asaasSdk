@@ -16,8 +16,8 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 </dependency>
 ```
 
-## Scheduling a invoice
-```java
+## Scheduling invoice
+```Java
 Invoice invoice = Invoice.creator()
                 .setServiceDescription("Nota fiscal da Fatura 101940. Descrição dos Serviços: ANÁLISE E DESENVOLVIMENTO DE SISTEMAS")
                 .setObservations("Mensal referente aos trabalhos de Junho.")
