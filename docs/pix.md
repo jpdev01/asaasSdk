@@ -55,7 +55,7 @@ PixTransaction cancelledPixTransaction = PixTransaction
 ```
 
 ## Decodificar um QR Code Pix
-```
+```java
 PixDecodedQrCode decodedQrCode = PixDecodedQrCode.decoder()
                         .setPayload("payload")
                         .create();
