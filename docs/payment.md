@@ -20,3 +20,11 @@ Payment payment = Payment.creator()
                 .setDescription("Teste")
                 .create();
 ```
+
+## Estornar uma cobrança recebida
+
+```java
+Payment.refunder(paymentId)
+        .setValue(new BigDecimal("valor"))
+        .create();
+```
