@@ -15,4 +15,10 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 
 - [Invoice](invoice.md)
 - [Pix](pix.md)
-- [How to schedule invoice](setup/readme.md)
+- [Commercial Info](commercialinfo.md)
+- [Payment Link](paymentlink.md)
+- [Account Status](myaccount.md)
+- [Customer Account](customeraccount.md)
+- [Payment](payment.md)
+- [Bill](bill.md)
+- [Sub conta](account.md)
