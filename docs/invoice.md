@@ -19,3 +19,17 @@ Invoice invoice = Invoice.creator()
                 )
                 .create();
 ```
+
+## Listar notas fiscais
+```java
+ResourceSet<Invoice> invoiceResourceSet = Invoice
+                .reader()
+                .read();
+```
+
+## Recuperar nota fiscal
+```java
+Invoice invoice = Invoice
+                .fetcher("inv_000000000232")
+                .fetch();
+```

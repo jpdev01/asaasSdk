@@ -8,3 +8,8 @@ CustomerAccount customerAccount = CustomerAccount.creator()
                 .setCpfCnpj("10030823005")
                 .create();
 ```
+
+## Recuperar cliente
+```java
+CustomerAccount customerAccount = CustomerAccount.fetcher("cus_xxxxxxxxxx").fetch();
+```

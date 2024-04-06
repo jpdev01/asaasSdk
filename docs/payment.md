@@ -23,8 +23,51 @@ Payment payment = Payment.creator()
 
 ## Estornar uma cobrança recebida
 
+Para estornar uma cobrança de forma total:
 ```java
 Payment.refunder(paymentId)
-        .setValue(new BigDecimal("valor"))
         .create();
+```
+
+Para estornar parcialmente, informe o valor a ser estornado:
+```java
+Payment.refunder(266093389L).setValue(new BigDecimal("10.0")).create();
+```
+
+## Recuperar cobranças
+```java
+ResourceSet<Payment> paymentResourceSet = Payment.reader().read();
+```
+Filtros também podem ser utilizados:
+```java
+ResourceSet<Payment> paymentResourceSet = Payment.reader()
+                .setStatus(PaymentStatus.RECEIVED)
+                .read();
+```
+Filtrando pela data de vencimento:
+```java
+ResourceSet<Payment> paymentResourceSet = Payment.reader()
+                .setStatus(PaymentStatus.RECEIVED)
+                .setStartPaymentDate(new Date())
+                .setFinishDueDate(new Date())
+                .read()
+```
+
+## Recuperar status cobrança
+```java
+Payment.statusFetcher("ID").fetch();
+```
+Exemplo:
+```java
+PaymentStatusData paymentStatusData = Payment.statusFetcher("pay_9087711026766517").fetch();
+```
+
+## Remover cobrança
+```java
+PaymentDeleted paymentDeleted = Payment.deleter(payment.getId()).delete();
+```
+
+## Resgatar cobrança deletada
+```java
+Payment payment = Payment.restorer(payment.getId()).create();
 ```

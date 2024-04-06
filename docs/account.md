@@ -9,3 +9,8 @@ Account account = Account.creator()
                 .setCpfCnpj("87.326.705/0001-81")
                 .create();
 ```
+
+## Recuperar subconta
+```java
+Account.fetcher(account.id).fetch();
+```

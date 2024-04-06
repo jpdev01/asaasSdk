@@ -28,3 +28,15 @@ DeletedResource deletedPaymentLink = PaymentLink
                 .deleter("725104409743")
                 .delete();
 ```
+
+## Listar links de pagamento
+```java
+ResourceSet<PaymentLink> paymentLinkResourceSet = PaymentLink
+                .reader()
+                .read();
+```
+
+## Recuperar um link de pagamento
+```java
+PaymentLink link = PaymentLink.fetcher("725104409743").fetch();
+```
