@@ -1,14 +1,13 @@
 # ASAAS SDK
 
-SDK não oficial www.asaas.com
+This SDK was built by @jpdev01 to facilitate the development of integrations with [Asaas](https://asaas.com.br)
 
-author: [@jpdev01](https://github.com/jpdev01)
+## User Guide
+Setup and usage is described in our [User Guide](https://jpdev01.github.io/asaasSdk/)
 
-## :closed_book: Documentação
-https://github.com/jpdev01/asaasSdk/wiki
+## Get Started
+The recommended way to use the AWS SDK for Java in your project is to consume it from Maven Central. (includes all modules present in the API).
 
-## Usando o SDK
-A maneira recomendada de usar o AWS SDK for Java em seu projeto é consumi-lo no Maven Central. (inclui todos os módulos presentes na API).
 ```xml
 <dependency>
     <groupId>io.github.jpdev01</groupId>
