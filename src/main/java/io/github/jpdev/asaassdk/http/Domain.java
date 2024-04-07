@@ -29,7 +29,8 @@ public enum Domain {
     FEE("myAccount/fees"),
     STATUS("myAccount/status"),
     ACCOUNT("accounts"),
-    SUBSCRIPTION("subscriptions");
+    SUBSCRIPTION("subscriptions"),
+    WEBHOOK("webhooks");
 
     private final String value;
 

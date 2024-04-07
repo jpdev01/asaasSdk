@@ -31,3 +31,5 @@ The API official documentation can be found [here](https://docs.asaas.com/docs/v
 - [Transferência](transfer.md)
 - [Notificações](notification.md)
 - [Nota fiscal](invoice.md)
+- [Assinaturas](subscription.md)
+- [Webhooks](webhook.md)

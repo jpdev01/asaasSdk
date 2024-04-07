@@ -36,6 +36,10 @@ import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.BankAccountSetting;
 import io.github.jpdev.asaassdk.rest.transfer.children.BankAccountType;
 import io.github.jpdev.asaassdk.rest.transfer.children.BankSetting;
+import io.github.jpdev.asaassdk.rest.webhook.Event;
+import io.github.jpdev.asaassdk.rest.webhook.SendType;
+import io.github.jpdev.asaassdk.rest.webhook.Webhook;
+import io.github.jpdev.asaassdk.rest.webhook.WebhookReader;
 import io.github.jpdev.asaassdk.utils.BillingType;
 import io.github.jpdev.asaassdk.utils.Money;
 
@@ -47,7 +51,13 @@ public class Examples {
     public static void main(String[] args) {
         Asaas.init(Secret.getAccessToken());
 
-        Subscription.reader().read();
+        Webhook configuredWebhook = Webhook.creator()
+                .setName("Teste")
+                .setUrl("https://www.exemplo.com/webhook/asaas")
+                .setEmail("joe@gmail.com")
+                .setSendType(SendType.SEQUENTIALLY)
+                .addEvent(Event.PAYMENT_RECEIVED)
+                .create();
     }
 
     private void pixTransaction() {
