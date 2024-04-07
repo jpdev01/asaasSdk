@@ -46,6 +46,8 @@ public class Examples {
 
     public static void main(String[] args) {
         Asaas.init(Secret.getAccessToken());
+
+        Subscription.reader().read();
     }
 
     private void pixTransaction() {

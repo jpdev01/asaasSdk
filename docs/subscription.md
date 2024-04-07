@@ -12,3 +12,22 @@ Subscription subscription = Subscription.creator()
                 .setDescription("Assinatura Plano Pró")
                 .create();
 ```
+
+## Listar assinaturas
+    
+```java
+ResourceSet<Subscription> subscriptionResourceSet = Subscription.reader().read();
+```
+
+Também é possível utilizar filtros
+
+```java
+ResourceSet<Subscription> subscriptionResourceSet = Subscription.reader()
+                .setStatus(SubscriptionStatus.ACTIVE)
+                .read();
+
+ResourceSet<Subscription> subscriptionResourceSet = Subscription.reader()
+                .setCustomer("cus_000072683044")
+                .setStatus(SubscriptionStatus.ACTIVE)
+                .read();
+```

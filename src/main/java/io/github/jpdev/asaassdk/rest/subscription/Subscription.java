@@ -16,7 +16,7 @@ public class Subscription {
     public double value;
     public String nextDueDate;
     public String description;
-    public String status;
+    public SubscriptionStatus status;
     public Discount discount;
     public Fine fine;
     public Interest interest;
@@ -29,4 +29,7 @@ public class Subscription {
         return new SubscriptionCreator();
     }
 
+    public static SubscriptionReader reader() {
+        return new SubscriptionReader();
+    }
 }
