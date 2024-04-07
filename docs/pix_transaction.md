@@ -39,6 +39,16 @@ Transfer transfer = Transfer.pixManualCreator()
         .create();
 ```
 
+## Pagar um QR Code Pix
+```java
+final String examplePayload = "00020101021226730014br.gov.bcb.pix2551pix-h.asaas.com/pixqrcode/cobv/pay_76575613967995145204000053039865802BR5905ASAAS6009Joinville61088922827162070503***63045E7A";
+PixTransaction pixTransactionQrCodeCreator = PixTransaction
+        .qrCodeCreator()
+        .setPayload(examplePayload)
+        .setValue(Money.create(new BigDecimal(10.0)))
+        .create();
+```
+
 ## Listar transações Pix
 ```java
 ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader().read();

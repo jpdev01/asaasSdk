@@ -9,6 +9,7 @@ public enum Domain {
     REFUND_PAYMENT("payments/$id/refund"),
     PIX_TRANSACTION("pix/transactions"),
     PIX_TRANSACTION_CANCELLATION("pix/transactions/$id/cancel"),
+    PIX_TRANSACTION_QR_CODE("pix/qrCodes/pay"),
     PIX_ADDRESS_KEY("pix/addressKeys"),
     STATIC_PIX_QR_CODE("pix/qrCodes/static"),
     DECODE_PIX_QR_CODE("pix/qrCodes/decode"),

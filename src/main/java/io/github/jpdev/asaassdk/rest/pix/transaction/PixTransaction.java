@@ -55,4 +55,8 @@ public class PixTransaction {
     public static PixTransactionFetcher fetcher(Object id) {
         return new PixTransactionFetcher(id);
     }
+
+    public static PixTransactionQrCodeCreator qrCodeCreator() {
+        return new PixTransactionQrCodeCreator();
+    }
 }
