@@ -11,6 +11,8 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 </dependency>
 ```
 
+The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
+
 # Documentation
 
 - [Pix - QR Code e Chaves](pix_dict.md)

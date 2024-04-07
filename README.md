@@ -15,3 +15,5 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
     <version>1.2-SNAPSHOT</version>
 </dependency>
 ```
+
+The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
