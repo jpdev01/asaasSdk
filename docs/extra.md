@@ -21,5 +21,5 @@ Transfer transfer = Transfer.pixAddressKeyCreator()
         .setPixAddressKeyType(PixAddressKeyType.CPF)
         .create();
 
-transfer.getRateLimit(); // Here you can get the rate limit
+transfer.getRateLimit(); // Here you can get the rate limit of the last request
 ```
