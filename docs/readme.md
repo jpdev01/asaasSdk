@@ -1,4 +1,4 @@
-This SDK was built by [@jpdev01](https://github.com/jpdev01) to facilitate the development of integrations with https://asaas.com.br
+This SDK was built by [@jpdev01](https://github.com/jpdev01) to facilitate the development of integrations with [Asaas](https://asaas.com.br)
 
 ## Get started
 
