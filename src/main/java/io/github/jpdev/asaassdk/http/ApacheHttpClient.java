@@ -8,9 +8,11 @@ import java.util.logging.Logger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
@@ -20,9 +22,19 @@ public class ApacheHttpClient {
     private final CloseableHttpClient httpclient;
     private final static String ACCESS_TOKEN_HEADER = "access_token";
 
-    public ApacheHttpClient(String acessToken) {
+    public ApacheHttpClient(String acessToken, int timeout) {
         this.accessToken = acessToken;
-        httpclient = HttpClients.createDefault();
+
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(timeout)
+                .setSocketTimeout(timeout)
+                .build();
+
+        CloseableHttpClient httpClient = HttpClientBuilder.create()
+                .setDefaultRequestConfig(requestConfig)
+                .build();
+
+        httpclient = httpClient;
     }
 
     public Response get(String url) throws ConnectionException {

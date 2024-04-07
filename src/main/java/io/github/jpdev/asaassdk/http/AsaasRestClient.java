@@ -19,6 +19,8 @@ public class AsaasRestClient {
     private final ApacheHttpClient client;
     private final List<String> userAgentExtensions;
 
+    private final static int DEFAULT_TIMEOUT = 30000;
+
     public ObjectMapper getObjectMapper() {
         return objectMapper;
     }
@@ -65,18 +67,25 @@ public class AsaasRestClient {
 
     public static class Builder {
         private String token;
+        private Integer timeout;
 
         private ApacheHttpClient httpClient;
         private List<String> userAgentExtensions;
 
-        public Builder(final String token) {
+        public Builder(final String token, final Integer timeout) {
             this.token = token;
+            if (timeout != null) {
+                this.timeout = timeout;
+            } else {
+                this.timeout = DEFAULT_TIMEOUT;
+            }
         }
 
 
         public AsaasRestClient build() {
             if (this.httpClient == null) {
-                this.httpClient = new ApacheHttpClient(this.token);
+                if (this.timeout == null) this.timeout = DEFAULT_TIMEOUT;
+                this.httpClient = new ApacheHttpClient(this.token, this.timeout);
             }
             return new AsaasRestClient(this);
         }

@@ -6,6 +6,7 @@ public class Asaas {
     private static final String ENDPOINT_SANDBOX = "https://sandbox.asaas.com/api/v3";
 
     private static String token;
+    private static Integer timeout;
 
     public static AsaasRestClient restClient;
 
@@ -22,6 +23,10 @@ public class Asaas {
 
     public static void setToken(String token) {
         Asaas.token = token;
+    }
+
+    public static void setTimeout(Integer timeout) {
+        Asaas.timeout = timeout;
     }
 
     public static AsaasRestClient getRestClient() {
@@ -47,7 +52,7 @@ public class Asaas {
             );
         }
 
-        AsaasRestClient.Builder builder = new AsaasRestClient.Builder(Asaas.token);
+        AsaasRestClient.Builder builder = new AsaasRestClient.Builder(Asaas.token, Asaas.timeout);
 
         return builder.build();
     }

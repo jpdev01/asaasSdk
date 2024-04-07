@@ -11,6 +11,11 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 </dependency>
 ```
 
+Before making any requests, you need to call the `init` method using your API key.
+```java
+Asaas.init("your_api_key");
+```
+
 The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
 
 # Documentation
@@ -33,3 +38,7 @@ The API official documentation can be found [here](https://docs.asaas.com/docs/v
 - [Nota fiscal](invoice.md)
 - [Assinaturas](subscription.md)
 - [Webhooks](webhook.md)
+
+## Extra
+
+- [Configurações extras](extra.md)
