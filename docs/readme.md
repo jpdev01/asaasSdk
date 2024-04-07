@@ -42,3 +42,4 @@ The API official documentation can be found [here](https://docs.asaas.com/docs/v
 ## Extra
 
 - [Configurações extras](extra.md)
+- [Exemples](https://github.com/jpdev01/asaasSdk/blob/master/src/main/java/io/github/jpdev/asaassdk/doc/Examples.java)

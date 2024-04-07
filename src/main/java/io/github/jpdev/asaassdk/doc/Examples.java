@@ -50,10 +50,11 @@ public class Examples {
 
     public static void main(String[] args) {
         Asaas.init(Secret.getAccessToken());
-        Asaas.setTimeout(10000);
+        
+        pixAddressKey();
     }
 
-    private void pixTransaction() {
+    private static void pixTransaction() {
         ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader().read();
         PixTransaction pixTransaction = PixTransaction.fetcher("bc515f74-d5c7-4bc2-93e5-3bafc0a9b15d").fetch();
         PixTransaction cancelledPixTransaction = PixTransaction.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
@@ -62,7 +63,7 @@ public class Examples {
                 .read();
     }
 
-    private void pixAddressKey() {
+    private static void pixAddressKey() {
         ResourceSet<PixAddressKey> pixAddressKeyResourceSet = PixAddressKey.reader()
                 .setStatus(PixAddressKeyStatus.ACTIVE)
                 .setLimit(1)
@@ -71,13 +72,13 @@ public class Examples {
         PixAddressKey.reader().read();
     }
 
-    private void decodePixQrCode() {
+    private static void decodePixQrCode() {
         PixDecodedQrCode decodedQrCode = PixDecodedQrCode.decoder()
                 .setPayload("payload")
                 .create();
     }
 
-    private void transfer() {
+    private static void transfer() {
         ResourceSet<Transfer> transferList = Transfer.reader().read();
         Transfer transfer = Transfer.pixAddressKeyCreator()
                 .setPixAddressKey("09414368965")
@@ -113,13 +114,13 @@ public class Examples {
                 .create();
     }
 
-    private void bill() {
+    private static void bill() {
         Bill bill = Bill.creator()
                 .setIdentificationField("25794150099003551916515000211407100000000000000")
                 .create();
     }
 
-    private void pixStaticQrCode() {
+    private static void pixStaticQrCode() {
         PixQrCode qrCode = PixQrCode
                 .creator()
                 .setAddressKey(PixAddressKey.reader().read().getData().get(0).key)
@@ -129,7 +130,7 @@ public class Examples {
         System.out.printf(qrCode.payload);
     }
 
-    private void payment() {
+    private static void payment() {
         Payment payment = Payment.creator()
                 .setCustomer("cus_000072683114")
                 .setBillingType(BillingType.PIX)
@@ -152,7 +153,7 @@ public class Examples {
         PaymentIdentificationField linhaDigitavel = Payment.identificationFieldFetcher("pay_9087711026766517").fetch();
     }
 
-    private void customerAccount() {
+    private static void customerAccount() {
         CustomerAccount.fetcher("cus_000072683044").fetch();
         CustomerAccount customerAccount = CustomerAccount.creator()
                 .setName("criado via API")
@@ -160,12 +161,12 @@ public class Examples {
                 .create();
     }
 
-    private void notification() {
+    private static void notification() {
         ResourceSet<NotificationConfig> notificationConfigList = NotificationConfig.customerAccountReader("cus_000072683044").read();
         NotificationConfig.updater(notificationConfigList.getData().get(0).getId()).setEnabled(false).update();
     }
 
-    private void paymentLink() {
+    private static void paymentLink() {
         PaymentLink link = PaymentLink.fetcher("725104409743").fetch();
         ResourceSet<PaymentLink> paymentLinkResourceSet = PaymentLink
                 .reader()
@@ -193,14 +194,14 @@ public class Examples {
                 .update();
     }
 
-    private void financialTransaction() {
+    private static void financialTransaction() {
         ResourceSet<FinancialTransaction> financialTransactionResourceSet = FinancialTransaction
                 .reader()
                 .setTransferId("transferId")
                 .read();
     }
 
-    private void invoice() {
+    private static void invoice() {
         Invoice invoice = Invoice.creator()
                 .setServiceDescription("Nota fiscal da Fatura 101940. Descrição dos Serviços: ANÁLISE E DESENVOLVIMENTO DE SISTEMAS")
                 .setObservations("Mensal referente aos trabalhos de Junho.")
@@ -221,11 +222,11 @@ public class Examples {
                 .create();
     }
 
-    private void finance() {
+    private static void finance() {
         FinanceBalance financeBalance = FinanceBalance.fetcher().fetch();
     }
 
-    private void installment() {
+    private static void installment() {
         ResourceSet<Installment> installmentResourceSet = Installment.reader().read();
         DeletedResource installmentDeleted = Installment.deleter(installmentResourceSet.getData().get(0).getId()).delete();
     }
