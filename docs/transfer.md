@@ -21,3 +21,13 @@ Transfer ted = Transfer.tedCreator()
                 .setValue(Money.create(new BigDecimal(1.01)))
                 .create();
 ```
+
+## Transferir entre contas Asaas
+Só é possível fazer transferência entre contas Asaas para contas que possuam vínculo entre si, como conta raiz e subconta, ou duas subcontas de mesma conta raiz.
+
+```java
+Transfer internal = Transfer.internalCreator()
+                .setValue(Money.create(new BigDecimal(10)))Só é possível fazer transferência entre contas Asaas para contas que possuam vínculo entre si, como conta raiz e subconta, ou duas subcontas de mesma conta raiz.
+                .setWalletId("0021c712-d963-4d86-a59d-031e7ac51a2e")
+                .create();
+```

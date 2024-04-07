@@ -32,4 +32,8 @@ public class Transfer {
     public static TransferReader reader() {
         return new TransferReader();
     }
+
+    public static TransferInternalCreator internalCreator() {
+        return new TransferInternalCreator();
+    }
 }

@@ -112,6 +112,11 @@ public class Examples {
                 .setBankAccount(bankAccountSetting)
                 .setValue(Money.create(new BigDecimal(1.01)))
                 .create();
+
+        Transfer internal = Transfer.internalCreator()
+                .setValue(Money.create(new BigDecimal(10)))
+                .setWalletId("0021c712-d963-4d86-a59d-031e7ac51a2e")
+                .create();
     }
 
     private static void bill() {
