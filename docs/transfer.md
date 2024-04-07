@@ -31,3 +31,9 @@ Transfer internal = Transfer.internalCreator()
                 .setWalletId("0021c712-d963-4d86-a59d-031e7ac51a2e")
                 .create();
 ```
+
+## Recuperar transferência por id
+
+```java
+Transfer transfer = Transfer.fetcher("transfer_id").fetch();
+```

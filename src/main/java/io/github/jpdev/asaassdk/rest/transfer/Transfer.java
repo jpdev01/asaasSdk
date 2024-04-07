@@ -36,4 +36,8 @@ public class Transfer {
     public static TransferInternalCreator internalCreator() {
         return new TransferInternalCreator();
     }
+
+    public static TransferFetcher fetcher(String id) {
+        return new TransferFetcher(id);
+    }
 }
