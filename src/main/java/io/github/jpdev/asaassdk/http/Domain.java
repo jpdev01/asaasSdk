@@ -28,7 +28,8 @@ public enum Domain {
     ACCOUNT_NUMBER("myAccount/accountNumber"),
     FEE("myAccount/fees"),
     STATUS("myAccount/status"),
-    ACCOUNT("accounts");
+    ACCOUNT("accounts"),
+    SUBSCRIPTION("subscriptions");
 
     private final String value;
 

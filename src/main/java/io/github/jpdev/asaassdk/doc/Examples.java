@@ -30,6 +30,8 @@ import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionType;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.PixQrCode;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
 import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransaction;
+import io.github.jpdev.asaassdk.rest.subscription.Subscription;
+import io.github.jpdev.asaassdk.rest.subscription.SubscriptionCycle;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.BankAccountSetting;
 import io.github.jpdev.asaassdk.rest.transfer.children.BankAccountType;
@@ -44,8 +46,6 @@ public class Examples {
 
     public static void main(String[] args) {
         Asaas.init(Secret.getAccessToken());
-        myStatus();
-        subAccount();
     }
 
     private void pixTransaction() {
@@ -258,5 +258,15 @@ public class Examples {
 
         Account fetched = Account.fetcher(account.id).fetch();
         System.out.println(fetched.getEmail());
+    }
+
+    private static void subscription() {
+        Subscription subscription = Subscription.creator()
+                .setCustomer("cus_000072683044")
+                .setCycle(SubscriptionCycle.MONTHLY)
+                .setNextDueDate(new Date())
+                .setValue(Money.create(100))
+                .setDescription("Teste")
+                .create();
     }
 }
