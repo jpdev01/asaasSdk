@@ -2,6 +2,7 @@ package io.github.jpdev.asaassdk.rest.action;
 
 import io.github.jpdev.asaassdk.exception.ApiException;
 import io.github.jpdev.asaassdk.http.Asaas;
+import io.github.jpdev.asaassdk.rest.ApiResource;
 import io.github.jpdev.asaassdk.utils.JsonUtil;
 import io.github.jpdev.asaassdk.http.AsaasRestClient;
 import io.github.jpdev.asaassdk.http.Response;
@@ -23,7 +24,11 @@ public abstract class Creator<T> {
         }
 
         try {
-            return client.getObjectMapper().readValue(response.getContent(), getResourceClass());
+            T objectResponse = client.getObjectMapper().readValue(response.getContent(), getResourceClass());
+            if (objectResponse instanceof ApiResource) {
+                ((ApiResource) objectResponse).setRateLimit(response.getRateLimit());
+            }
+            return objectResponse;
         } catch (Exception e) {
             throw new RuntimeException("Error parsing response", e);
         }

@@ -1,5 +1,6 @@
 package io.github.jpdev.asaassdk.rest.pix.transaction;
 
+import io.github.jpdev.asaassdk.rest.ApiResource;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionOriginType;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionStatus;
@@ -8,7 +9,7 @@ import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionType;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class PixTransaction {
+public class PixTransaction extends ApiResource {
 
     public String id;
     public Object transferId;

@@ -1,11 +1,12 @@
 package io.github.jpdev.asaassdk.rest.transfer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.github.jpdev.asaassdk.rest.ApiResource;
 
 import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transfer {
+public class Transfer extends ApiResource {
 
     private BigDecimal value;
 

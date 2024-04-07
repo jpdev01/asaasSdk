@@ -38,6 +38,17 @@ public class TransferPixAddressKeyCreator extends Creator<Transfer> {
         return this;
     }
 
+    public String getPixAddressKey() {
+        return pixAddressKey;
+    }
+
+    public PixAddressKeyType getPixAddressKeyType() {
+        return pixAddressKeyType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     public String getResourceUrl() {
         return Domain.TRANSFER.toString();

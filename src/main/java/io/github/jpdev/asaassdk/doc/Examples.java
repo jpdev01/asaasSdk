@@ -51,7 +51,7 @@ public class Examples {
     public static void main(String[] args) {
         Asaas.init(Secret.getAccessToken()); // Initialize the SDK with your access token
         
-        pixAddressKey();
+        transfer();
     }
 
     private static void pixTransaction() {
@@ -81,7 +81,7 @@ public class Examples {
     private static void transfer() {
         ResourceSet<Transfer> transferList = Transfer.reader().read();
         Transfer transfer = Transfer.pixAddressKeyCreator()
-                .setPixAddressKey("09414368965")
+                .setPixAddressKey("PIX_KEY")
                 .setValue(Money.create(0.01))
                 .setDescription("teste")
                 .setPixAddressKeyType(PixAddressKeyType.CPF)
