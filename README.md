@@ -5,7 +5,7 @@ This SDK was built by @jpdev01 to facilitate the development of integrations wit
 ## User Guide
 Setup and usage is described in our [User Guide](https://jpdev01.github.io/asaasSdk/)
 
-## Get Started
+## Installation
 The recommended way to use the AWS SDK for Java in your project is to consume it from Maven Central. (includes all modules present in the API).
 
 ```xml
