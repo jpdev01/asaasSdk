@@ -1,19 +1,14 @@
-## Criar um QR Code Pix estático
-```java
-PixQrCode qrCode = PixQrCode
-        .creator()
-        .setAddressKey("SUA_CHAVE_PIX")
-        .setDescription("teste")
-        .setValue(new BigDecimal("0.01")).create();
-```
-
 ## Recuperar informações de uma transação Pix
 ```java
-PixTransaction pixTransaction = PixTransaction.fetcher("PIX_TRANSACTION_ID").fetch()
+PixTransaction pixTransaction = PixTransaction.fetcher("PIX_TRANSACTION_ID").fetch();
 ```
-Exemplo:
+Exemplo utilizando Identificador fim a fim:
 ```java
-PixTransaction pixTransaction = PixTransaction.fetcher("bc515f74-d5c7-4bc2-93e5-3bafc0a9b15d").fetch()
+PixTransaction pixTransaction = PixTransaction.fetcher("E18236120202302141342s15536c561e").fetch();
+```
+Exemplo utilizando Identificador ID:
+```java
+PixTransaction pixTransaction = PixTransaction.fetcher("bc515f74-d5c7-4bc2-93e5-3bafc0a9b15d").fetch();
 ```
 
 ## Criar uma transação Pix
@@ -44,23 +39,6 @@ Transfer transfer = Transfer.pixManualCreator()
         .create();
 ```
 
-## Cancelar uma transação Pix
-
-Para cancelar uma transação Pix, você deve informar o id da transação Pix que deseja cancelar.
-
-```java
-PixTransaction cancelledPixTransaction = PixTransaction
-                .canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4")
-                .create();
-```
-
-## Decodificar um QR Code Pix
-```java
-PixDecodedQrCode decodedQrCode = PixDecodedQrCode.decoder()
-                        .setPayload("payload")
-                        .create();
-```
-
 ## Listar transações Pix
 ```java
 ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader().read();
@@ -71,12 +49,5 @@ Também é possível utilizar filtros
 ```java
 ResourceSet<PixTransaction> pixTransactionResourceSet = PixTransaction.reader()
                 .setType(PixTransactionType.DEBIT)
-                .read();
-```
-
-## Recuperar chaves Pix ativas
-```java
-ResourceSet<PixAddressKey> pixAddressKeyList = PixAddressKey.reader()
-                .setStatus(PixAddressKeyStatus.ACTIVE)
                 .read();
 ```

@@ -13,7 +13,8 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 
 # Documentation
 
-- [Pix](pix.md)
+- [Pix - QR Code e Chaves](pix_dict.md)
+- [Pix - Transações](pix_dict.md)
 - [Cobrança](payment.md)
 - [Clientes](customeraccount.md)
 - [Pague contas](bill.md)
