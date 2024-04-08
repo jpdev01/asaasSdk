@@ -18,7 +18,7 @@ Asaas.init("your_api_key");
 
 The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
 
-# Documentation
+## Documentation
 
 - [Pix - QR Code e Chaves](pix_dict.md)
 - [Pix - Transações](pix_dict.md)
