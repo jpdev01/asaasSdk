@@ -14,6 +14,11 @@ PixDecodedQrCode decodedQrCode = PixDecodedQrCode.decoder()
                         .create();
 ```
 
+## Criar uma chave Pix aleatória
+```java
+PixAddressKey.creator().setType(PixAddressKeyType.EVP).create();
+```
+
 ## Recuperar chaves Pix ativas
 ```java
 ResourceSet<PixAddressKey> pixAddressKeyList = PixAddressKey.reader()
