@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
+import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
@@ -28,6 +29,7 @@ public class ApacheHttpClient {
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(timeout)
                 .setSocketTimeout(timeout)
+                .setCookieSpec(CookieSpecs.STANDARD)
                 .build();
 
         CloseableHttpClient httpClient = HttpClientBuilder.create()
