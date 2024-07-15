@@ -4,15 +4,3 @@ on:
   push:
     branches:
       - master
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout this repo
-        uses: actions/checkout@v3
-
-      - name: GitHub Action
-        uses: readmeio/rdme@v8
-        with:
-          rdme: docs ./documentation --key=${{ secrets.README_API_KEY }} --version=2.0
