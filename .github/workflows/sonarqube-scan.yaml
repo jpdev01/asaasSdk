@@ -23,7 +23,8 @@ jobs:
             ./sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -X \
                -Dsonar.projectKey=AsaasSdk \
                -Dsonar.sources=. \
-               -Dsonar.host.url=http://localhost:9000 \
+               -Dsonar.host.url=$SONARQUBE_AWS_HOST \
                -Dsonar.login=$SONARQUBE_TOKEN
         env:
+          SONARQUBE_AWS_HOST: ${{ secrets.SONARQUBE_AWS_HOST }}
           SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
