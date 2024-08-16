@@ -3,7 +3,7 @@ name: Sonarqube Scan Test
 on:
   pull_request:
     branches:
-      - main
+      - sonnar
 
 jobs:
   sonarqube:
