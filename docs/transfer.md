@@ -39,3 +39,9 @@ Transfer internal = Transfer.internalCreator()
 ```java
 Transfer transfer = Transfer.fetcher("transfer_id").fetch();
 ```
+
+
+## Cancelar uma transferência
+```java
+Transfer cancelledTransfer = Transfer.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
+```

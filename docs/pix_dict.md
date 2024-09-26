@@ -25,3 +25,8 @@ ResourceSet<PixAddressKey> pixAddressKeyList = PixAddressKey.reader()
                 .setStatus(PixAddressKeyStatus.ACTIVE)
                 .read();
 ```
+
+## Cancelar uma transação Pix
+```java
+PixTransaction cancelledPixTransaction = PixTransaction.canceller("35363f6e-93e2-11ec-b9d9-96f4053b1bd4").create();
+```

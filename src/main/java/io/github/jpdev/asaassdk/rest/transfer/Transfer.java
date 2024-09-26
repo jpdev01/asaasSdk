@@ -41,4 +41,8 @@ public class Transfer extends ApiResource {
     public static TransferFetcher fetcher(String id) {
         return new TransferFetcher(id);
     }
+
+    public static TransferCanceller canceller(String id) {
+        return new TransferCanceller(id);
+    }
 }
