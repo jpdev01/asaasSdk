@@ -2,7 +2,7 @@ package io.github.jpdev.asaassdk.http;
 
 public class Asaas {
 
-    private static final String ENDPOINT_PRODUCTION = "https://www.asaas.com/api/v3";
+    private static final String ENDPOINT_PRODUCTION = "https://api.asaas.com/v3";
     private static final String ENDPOINT_SANDBOX = "https://sandbox.asaas.com/api/v3";
 
     private static String token;
