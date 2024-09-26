@@ -50,8 +50,6 @@ public class Examples {
 
     public static void main(String[] args) {
         Asaas.init(Secret.getAccessToken()); // Initialize the SDK with your access token
-        
-        transfer();
     }
 
     private static void pixTransaction() {

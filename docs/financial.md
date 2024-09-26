@@ -12,8 +12,3 @@ ResourceSet<FinancialTransaction> financialTransactionResourceSet = FinancialTra
                 .setTransferId("transferId")
                 .read();
 ```
-
-## Recuperar saldo atual
-```java
-FinanceBalance financeBalance = FinanceBalance.fetcher().fetch();
-```
