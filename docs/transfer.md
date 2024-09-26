@@ -5,6 +5,7 @@ ResourceSet<Transfer> transferList = Transfer.reader().read();
 
 ## Criar transferência TED
 ```java
+// cria a conta bancária de destino
 BankAccountSetting bankAccountSetting = new BankAccountSetting()
                 .setBank(new BankSetting().setCode("085"))
                 .setAccountName("Paulo")
@@ -16,6 +17,7 @@ BankAccountSetting bankAccountSetting = new BankAccountSetting()
                 .setAccountDigit("5")
                 .setBankAccountType(BankAccountType.CONTA_CORRENTE);
 
+// efetua o TED
 Transfer ted = Transfer.tedCreator()
                 .setBankAccount(bankAccountSetting)
                 .setValue(Money.create(new BigDecimal(1.01)))
