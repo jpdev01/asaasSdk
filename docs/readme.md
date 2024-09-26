@@ -7,7 +7,7 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 <dependency>
     <groupId>io.github.jpdev01</groupId>
     <artifactId>asaassdk</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -45,3 +45,4 @@ The API official documentation can be found [here](https://docs.asaas.com/docs/v
 - [Configurações extras](extra.md)
 - [Exemples](https://github.com/jpdev01/asaasSdk/blob/master/src/main/java/io/github/jpdev/asaassdk/doc/Examples.java)
 - [Rate Limit](ratelimit.md)
+- [Repositório](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/jpdev01/asaassdk/)

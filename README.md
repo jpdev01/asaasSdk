@@ -12,7 +12,7 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 <dependency>
     <groupId>io.github.jpdev01</groupId>
     <artifactId>asaassdk</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
 </dependency>
 ```
 
