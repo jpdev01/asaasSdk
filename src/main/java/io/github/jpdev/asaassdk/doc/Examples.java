@@ -47,8 +47,8 @@ import java.util.Date;
 public class Examples {
 
     public static void main(String[] args) {
-        Asaas.init(Secret.getAccessToken()); // Initialize the SDK with your access token
-        recurringTransfer();
+        Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
+        transfer();
     }
 
     private static void pixTransaction() {
@@ -76,7 +76,6 @@ public class Examples {
     }
 
     private static void transfer() {
-        ResourceSet<Transfer> transferList = Transfer.reader().read();
         Transfer transfer = Transfer.pixAddressKeyCreator()
                 .setPixAddressKey("PIX_KEY")
                 .setValue(Money.create(0.01))
@@ -84,6 +83,8 @@ public class Examples {
                 .setPixAddressKeyType(PixAddressKeyType.CPF)
                 .create();
         System.out.println(transfer.getValue().toString());
+
+        ResourceSet<Transfer> transferList = Transfer.reader().read();
 
         Date birthDate = new Date();
         BankAccountSetting bankAccountSetting = new BankAccountSetting()
