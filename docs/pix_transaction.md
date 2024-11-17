@@ -39,6 +39,21 @@ Transfer transfer = Transfer.pixManualCreator()
         .create();
 ```
 
+### Pix Recorrente
+```java
+ PixRecurring recurring = new PixRecurring()
+        .setFrequency(PixRecurringFrequency.MONTHLY)
+        .setQuantity(2);
+
+Transfer transfer = Transfer.pixAddressKeyCreator()
+        .setPixAddressKey("+5547999999999")
+        .setValue(Money.create(0.01))
+        .setDescription("teste")
+        .setPixAddressKeyType(PixAddressKeyType.PHONE)
+        .setRecurring(recurring)
+        .create();
+```
+
 ## Pagar um QR Code Pix
 ```java
 final String examplePayload = "00020101021226730014br.gov.bcb.pix2551pix-h.asaas.com/pixqrcode/cobv/pay_76575613967995145204000053039865802BR5905ASAAS6009Joinville61088922827162070503***63045E7A";

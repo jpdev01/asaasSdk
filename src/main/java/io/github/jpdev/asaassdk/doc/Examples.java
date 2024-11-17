@@ -33,9 +33,7 @@ import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransaction;
 import io.github.jpdev.asaassdk.rest.subscription.Subscription;
 import io.github.jpdev.asaassdk.rest.subscription.SubscriptionCycle;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
-import io.github.jpdev.asaassdk.rest.transfer.children.BankAccountSetting;
-import io.github.jpdev.asaassdk.rest.transfer.children.BankAccountType;
-import io.github.jpdev.asaassdk.rest.transfer.children.BankSetting;
+import io.github.jpdev.asaassdk.rest.transfer.children.*;
 import io.github.jpdev.asaassdk.rest.webhook.Event;
 import io.github.jpdev.asaassdk.rest.webhook.SendType;
 import io.github.jpdev.asaassdk.rest.webhook.Webhook;
@@ -49,7 +47,8 @@ import java.util.Date;
 public class Examples {
 
     public static void main(String[] args) {
-        Asaas.init(Secret.getAccessToken()); // Initialize the SDK with your access token
+        Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
+        transfer();
     }
 
     private static void pixTransaction() {
@@ -77,14 +76,15 @@ public class Examples {
     }
 
     private static void transfer() {
-        ResourceSet<Transfer> transferList = Transfer.reader().read();
         Transfer transfer = Transfer.pixAddressKeyCreator()
-                .setPixAddressKey("PIX_KEY")
+                .setPixAddressKey("+5547999999999")
                 .setValue(Money.create(0.01))
                 .setDescription("teste")
-                .setPixAddressKeyType(PixAddressKeyType.CPF)
+                .setPixAddressKeyType(PixAddressKeyType.PHONE)
                 .create();
         System.out.println(transfer.getValue().toString());
+
+        ResourceSet<Transfer> transferList = Transfer.reader().read();
 
         Date birthDate = new Date();
         BankAccountSetting bankAccountSetting = new BankAccountSetting()
@@ -115,6 +115,21 @@ public class Examples {
                 .setValue(Money.create(new BigDecimal(10)))
                 .setWalletId("0021c712-d963-4d86-a59d-031e7ac51a2e")
                 .create();
+    }
+
+    private static void recurringTransfer() {
+        PixRecurring recurring = new PixRecurring()
+                .setFrequency(PixRecurringFrequency.MONTHLY)
+                .setQuantity(2);
+
+        Transfer transfer = Transfer.pixAddressKeyCreator()
+                .setPixAddressKey("+5547999999999")
+                .setValue(Money.create(0.01))
+                .setDescription("teste")
+                .setPixAddressKeyType(PixAddressKeyType.PHONE)
+                .setRecurring(recurring)
+                .create();
+        System.out.println(transfer.getRecurring());
     }
 
     private static void bill() {

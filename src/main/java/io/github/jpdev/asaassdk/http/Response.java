@@ -138,9 +138,11 @@ public class Response {
     }
 
     private String findHeaderValue(String key) {
-        Optional<Header> headerEncontrado = Arrays.stream(headers)
+        if (headers == null) return null;
+
+        Optional<Header> headerValue = Arrays.stream(headers)
                 .filter(header -> header.getName().equals(key))
                 .findFirst();
-        return headerEncontrado.map(NameValuePair::getValue).orElse(null);
+        return headerValue.map(NameValuePair::getValue).orElse(null);
     }
 }
