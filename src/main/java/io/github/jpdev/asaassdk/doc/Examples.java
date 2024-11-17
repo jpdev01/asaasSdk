@@ -122,7 +122,7 @@ public class Examples {
                 .setQuantity(2);
 
         Transfer transfer = Transfer.pixAddressKeyCreator()
-                .setPixAddressKey("47999999999")
+                .setPixAddressKey("+5547999999999")
                 .setValue(Money.create(0.01))
                 .setDescription("teste")
                 .setPixAddressKeyType(PixAddressKeyType.PHONE)
