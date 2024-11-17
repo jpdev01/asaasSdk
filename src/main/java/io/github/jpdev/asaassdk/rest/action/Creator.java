@@ -1,5 +1,6 @@
 package io.github.jpdev.asaassdk.rest.action;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.jpdev.asaassdk.exception.ApiException;
 import io.github.jpdev.asaassdk.http.Asaas;
 import io.github.jpdev.asaassdk.rest.ApiResource;
@@ -34,7 +35,9 @@ public abstract class Creator<T> {
         }
     }
 
+    @JsonIgnore
     public abstract String getResourceUrl();
 
+    @JsonIgnore
     public abstract Class<T> getResourceClass();
 }

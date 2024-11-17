@@ -10,12 +10,22 @@ public class Transfer extends ApiResource {
 
     private BigDecimal value;
 
+    private String recurring;
+
     public BigDecimal getValue() {
         return value;
     }
 
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    public String getRecurring() {
+        return recurring;
+    }
+
+    public void setRecurring(String recurring) {
+        this.recurring = recurring;
     }
 
     public static TransferPixAddressKeyCreator pixAddressKeyCreator() {

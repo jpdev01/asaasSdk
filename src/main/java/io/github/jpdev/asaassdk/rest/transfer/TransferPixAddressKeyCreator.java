@@ -3,6 +3,7 @@ package io.github.jpdev.asaassdk.rest.transfer;
 import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Creator;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
+import io.github.jpdev.asaassdk.rest.transfer.children.PixRecurring;
 
 import java.math.BigDecimal;
 
@@ -12,7 +13,7 @@ public class TransferPixAddressKeyCreator extends Creator<Transfer> {
     private PixAddressKeyType pixAddressKeyType;
     private BigDecimal value;
     private String description;
-
+    private PixRecurring recurring;
 
     public TransferPixAddressKeyCreator setPixAddressKey(String pixAddressKey) {
         this.pixAddressKey = pixAddressKey;
@@ -44,6 +45,15 @@ public class TransferPixAddressKeyCreator extends Creator<Transfer> {
 
     public PixAddressKeyType getPixAddressKeyType() {
         return pixAddressKeyType;
+    }
+
+    public PixRecurring getRecurring() {
+        return recurring;
+    }
+
+    public TransferPixAddressKeyCreator setRecurring(PixRecurring recurring) {
+        this.recurring = recurring;
+        return this;
     }
 
     public String getDescription() {
