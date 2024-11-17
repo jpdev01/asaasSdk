@@ -77,10 +77,10 @@ public class Examples {
 
     private static void transfer() {
         Transfer transfer = Transfer.pixAddressKeyCreator()
-                .setPixAddressKey("PIX_KEY")
+                .setPixAddressKey("+5547999999999")
                 .setValue(Money.create(0.01))
                 .setDescription("teste")
-                .setPixAddressKeyType(PixAddressKeyType.CPF)
+                .setPixAddressKeyType(PixAddressKeyType.PHONE)
                 .create();
         System.out.println(transfer.getValue().toString());
 

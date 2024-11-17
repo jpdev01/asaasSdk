@@ -1,5 +1,7 @@
 package io.github.jpdev.asaassdk.rest.transfer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Creator;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
@@ -7,12 +9,15 @@ import io.github.jpdev.asaassdk.rest.transfer.children.PixRecurring;
 
 import java.math.BigDecimal;
 
+
 public class TransferPixAddressKeyCreator extends Creator<Transfer> {
 
     private String pixAddressKey;
     private PixAddressKeyType pixAddressKeyType;
     private BigDecimal value;
     private String description;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private PixRecurring recurring;
 
     public TransferPixAddressKeyCreator setPixAddressKey(String pixAddressKey) {
