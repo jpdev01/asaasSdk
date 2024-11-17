@@ -50,7 +50,8 @@ public class ApacheHttpClient {
 
             return new Response(
                     responseBody,
-                    response.getStatusLine().getStatusCode()
+                    response.getStatusLine().getStatusCode(),
+                    response.getAllHeaders()
             );
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,7 +70,8 @@ public class ApacheHttpClient {
             String responseBody = EntityUtils.toString(entity);
             return new Response(
                     responseBody,
-                    response.getStatusLine().getStatusCode()
+                    response.getStatusLine().getStatusCode(),
+                    response.getAllHeaders()
             );
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,7 +92,8 @@ public class ApacheHttpClient {
 
             return new Response(
                     EntityUtils.toString(response.getEntity()),
-                    response.getStatusLine().getStatusCode()
+                    response.getStatusLine().getStatusCode(),
+                    response.getAllHeaders()
             );
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,7 +114,8 @@ public class ApacheHttpClient {
 
             return new Response(
                     EntityUtils.toString(response.getEntity()),
-                    response.getStatusLine().getStatusCode()
+                    response.getStatusLine().getStatusCode(),
+                    response.getAllHeaders()
             );
         } catch (IOException ex) {
             Logger.getLogger(ApacheHttpClient.class.getName()).log(Level.SEVERE, null, ex);
