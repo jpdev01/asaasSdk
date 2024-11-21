@@ -18,6 +18,8 @@ public abstract class Reader<T> {
     public int limit = 10;
     public long offset = 0;
 
+    private static final int LIMIT_MAX_VALUE = 100;
+
     public List<FilterVO> activeFilters;
 
     public Integer getLimit() {
@@ -25,6 +27,8 @@ public abstract class Reader<T> {
     }
 
     public Reader<T> setLimit(Integer limit) {
+        if (limit > LIMIT_MAX_VALUE) throw new IllegalArgumentException("Limit cannot be greater than " + LIMIT_MAX_VALUE);
+
         this.limit = limit;
         return this;
     }

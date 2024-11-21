@@ -59,14 +59,6 @@ public class Examples {
         PixTransactionReader reader = PixTransaction.reader();
         ResourceSet<PixTransaction> page0 = reader.read();
         ResourceSet<PixTransaction> page1 = reader.nextPage().read();
-
-        ArrayList<PixTransaction> pixTransactions = new ArrayList<>();
-        pixTransactions.addAll(page0.getData());
-        pixTransactions.addAll(page1.getData());
-
-        for (PixTransaction pixTransaction : pixTransactions) {
-            System.out.println(pixTransaction.getId().equals("6b212665-4963-460d-9005-3805281790a4"));
-        }
     }
 
     private static void pixTransaction() {
