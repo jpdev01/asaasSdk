@@ -15,8 +15,8 @@ import java.util.List;
 
 public abstract class Reader<T> {
 
-    public Integer limit;
-    public Long offset;
+    public int limit = 10;
+    public long offset = 0;
 
     public List<FilterVO> activeFilters;
 
@@ -70,9 +70,16 @@ public abstract class Reader<T> {
         ));
     }
 
+    public Reader<T> nextPage() {
+        offset += limit;
+        return this;
+    }
+
     private String buildFullPath() {
         try {
             String path = getResourceUrl();
+            path = path.concat(fillPagination());
+
             if (activeFilters == null || activeFilters.isEmpty()) return path;
 
             String pathParams = "";
@@ -98,18 +105,6 @@ public abstract class Reader<T> {
                 }
             }
 
-            if (limit != null) {
-                pathParams = concatDelimiterFilter(pathParams)
-                        .concat("limit=")
-                        .concat(limit.toString());
-            }
-
-            if (offset != null) {
-                pathParams = concatDelimiterFilter(pathParams)
-                        .concat("offset=")
-                        .concat(offset.toString());
-            }
-
             return path.concat(pathParams);
         } catch (NoSuchFieldException | SecurityException | IllegalArgumentException |
                  IllegalAccessException unexpectedException) {
@@ -120,5 +115,18 @@ public abstract class Reader<T> {
     private String concatDelimiterFilter(String currentFilter) {
         if (currentFilter.isEmpty()) return currentFilter.concat("?");
         return currentFilter.concat("&");
+    }
+
+    private String fillPagination() {
+        String pathParams = "";
+        pathParams = concatDelimiterFilter(pathParams)
+                .concat("limit=")
+                .concat(String.valueOf(limit));
+
+        pathParams = concatDelimiterFilter(pathParams)
+                .concat("offset=")
+                .concat(String.valueOf(offset));
+
+        return pathParams;
     }
 }
