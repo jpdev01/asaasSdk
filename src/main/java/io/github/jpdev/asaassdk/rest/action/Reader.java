@@ -82,40 +82,13 @@ public abstract class Reader<T> {
     }
 
     private String buildFullPath() {
-        try {
-            String path = getResourceUrl();
-            path = path.concat(fillPagination());
+        String path = getResourceUrl();
+        path = path.concat(fillPagination());
 
-            if (activeFilters == null || activeFilters.isEmpty()) return path;
+        String filters = applyFilters();
+        if (filters != null) path = path.concat(filters);
 
-            String pathParams = "";
-            for (FilterVO filterVO : activeFilters) {
-                pathParams = concatDelimiterFilter(pathParams);
-                Field field = this.getClass().getDeclaredField(filterVO.getPropertyName());
-                pathParams = pathParams
-                        .concat(URLEncoder.encode(filterVO.getFilterKey()))
-                        .concat("=");
-
-                Object value = field.get(this);
-                if (value instanceof String || value instanceof Enum) {
-                    pathParams = pathParams
-                            .concat(value.toString());
-                } else if (value instanceof Integer) {
-                    pathParams = pathParams
-                            .concat(value.toString());
-                } else if (value instanceof Date) {
-                    pathParams = pathParams
-                            .concat(CustomDateUtils.toString((Date) value, CustomDateUtils.DATE));
-                } else {
-                    throw new IllegalStateException("Filtro não mapeado");
-                }
-            }
-
-            return path.concat(pathParams);
-        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException |
-                 IllegalAccessException unexpectedException) {
-            throw new IllegalStateException("Erro ao parsear filtros.");
-        }
+        return path;
     }
 
     private String concatDelimiterFilter(String currentFilter) {
@@ -134,5 +107,46 @@ public abstract class Reader<T> {
                 .concat(String.valueOf(offset));
 
         return pathParams;
+    }
+
+    private String applyFilters() {
+        if (activeFilters == null || activeFilters.isEmpty()) return null;
+
+        try {
+            StringBuilder pathParams = new StringBuilder();
+
+            for (FilterVO filterVO : activeFilters) {
+                pathParams.append("&");
+                Field field = this.getClass().getDeclaredField(filterVO.getPropertyName());
+
+                pathParams = new StringBuilder(pathParams.toString()
+                        .concat(parseFilterKey(filterVO))
+                        .concat("="));
+
+                Object value = field.get(this);
+                pathParams = new StringBuilder(pathParams.toString().concat(parseFilterValue(value)));
+            }
+
+            return pathParams.toString();
+        } catch (
+                NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException
+                unexpectedException
+        ) {
+            throw new IllegalStateException("Erro ao parsear filtros.");
+        }
+    }
+
+    private String parseFilterKey(FilterVO filterVO) {
+        return URLEncoder.encode(filterVO.getFilterKey());
+    }
+
+    private String parseFilterValue(Object value) {
+        if (value instanceof String || value instanceof Enum || value instanceof Integer) {
+            return value.toString();
+        } else if (value instanceof Date) {
+            return CustomDateUtils.toString((Date) value, CustomDateUtils.DATE);
+        }
+
+        throw new IllegalStateException("Filtro não mapeado");
     }
 }
