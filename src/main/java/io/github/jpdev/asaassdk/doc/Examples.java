@@ -26,6 +26,7 @@ import io.github.jpdev.asaassdk.rest.paymentlink.PaymentLink;
 import io.github.jpdev.asaassdk.rest.pix.addresskey.PixAddressKey;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyStatus;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
+import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionStatus;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionType;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.PixQrCode;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
@@ -59,6 +60,7 @@ public class Examples {
         PixTransactionReader reader = PixTransaction.reader();
         ResourceSet<PixTransaction> page0 = reader.read();
         ResourceSet<PixTransaction> page1 = reader.nextPage().read();
+        reader.setStatus(PixTransactionStatus.DONE).read().getData();
     }
 
     private static void pixTransaction() {
