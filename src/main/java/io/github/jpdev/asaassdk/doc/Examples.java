@@ -26,10 +26,12 @@ import io.github.jpdev.asaassdk.rest.paymentlink.PaymentLink;
 import io.github.jpdev.asaassdk.rest.pix.addresskey.PixAddressKey;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyStatus;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
+import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionStatus;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixTransactionType;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.PixQrCode;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
 import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransaction;
+import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransactionReader;
 import io.github.jpdev.asaassdk.rest.subscription.Subscription;
 import io.github.jpdev.asaassdk.rest.subscription.SubscriptionCycle;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
@@ -42,13 +44,23 @@ import io.github.jpdev.asaassdk.utils.BillingType;
 import io.github.jpdev.asaassdk.utils.Money;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class Examples {
 
     public static void main(String[] args) {
         Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
-        transfer();
+        paging();
+    }
+
+    private static void paging() {
+        PixTransactionReader reader = PixTransaction.reader();
+        ResourceSet<PixTransaction> page0 = reader.read();
+        ResourceSet<PixTransaction> page1 = reader.nextPage().read();
+        reader.setStatus(PixTransactionStatus.DONE).read().getData();
     }
 
     private static void pixTransaction() {
