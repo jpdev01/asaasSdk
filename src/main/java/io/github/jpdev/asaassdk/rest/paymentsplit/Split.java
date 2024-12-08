@@ -22,6 +22,14 @@ public class Split {
         return new PaymentSplitReceivedReader();
     }
 
+    public static PaymentSplitPaidFetcher paidFetcher(String id) {
+        return new PaymentSplitPaidFetcher(id);
+    }
+
+    public static PaymentSplitReceivedFetcher receivedFetcher(String id) {
+        return new PaymentSplitReceivedFetcher(id);
+    }
+
     public String getId() {
         return id;
     }
