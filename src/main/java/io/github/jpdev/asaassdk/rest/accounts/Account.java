@@ -35,6 +35,10 @@ public class Account {
         return new AccountFetcher(id);
     }
 
+    public static AccountReader reader() {
+        return new AccountReader();
+    }
+
     public String getObject() {
         return object;
     }

@@ -3,9 +3,11 @@ package io.github.jpdev.asaassdk.rest.payment;
 import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Creator;
 import io.github.jpdev.asaassdk.rest.payment.children.DiscountSetting;
+import io.github.jpdev.asaassdk.rest.payment.children.SplitSetting;
 import io.github.jpdev.asaassdk.utils.BillingType;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class PaymentCreator extends Creator<Payment> {
@@ -25,6 +27,8 @@ public class PaymentCreator extends Creator<Payment> {
 
     Integer installmentCount;
     BigDecimal installmentValue;
+
+    ArrayList<SplitSetting> split;
 
     public String getCustomer() {
         return customer;
@@ -114,6 +118,21 @@ public class PaymentCreator extends Creator<Payment> {
     public PaymentCreator setInstallmentValue(BigDecimal installmentValue) {
         this.installmentValue = installmentValue;
         return this;
+    }
+
+    public PaymentCreator setSplit(ArrayList<SplitSetting> split) {
+        this.split = split;
+        return this;
+    }
+
+    public PaymentCreator addSplit(SplitSetting split) {
+        if (this.split == null) this.split = new ArrayList<>();
+        this.split.add(split);
+        return this;
+    }
+
+    public ArrayList<SplitSetting> getSplit() {
+        return split;
     }
 
     @Override

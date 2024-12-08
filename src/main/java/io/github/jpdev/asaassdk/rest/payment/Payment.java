@@ -6,6 +6,7 @@ import io.github.jpdev.asaassdk.rest.payment.children.Interest;
 import io.github.jpdev.asaassdk.rest.payment.delete.PaymentDeleter;
 import io.github.jpdev.asaassdk.rest.payment.identificationfield.PaymentIdentificationFieldFetcher;
 import io.github.jpdev.asaassdk.rest.payment.restore.PaymentRestorer;
+import io.github.jpdev.asaassdk.rest.paymentsplit.Split;
 import io.github.jpdev.asaassdk.rest.payment.status.PaymentStatusFetcher;
 import io.github.jpdev.asaassdk.utils.BillingType;
 import io.github.jpdev.asaassdk.rest.payment.enums.PaymentStatus;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Payment {
@@ -57,6 +59,7 @@ public class Payment {
     private boolean postalService;
     private Object custody;  // You may need to define a specific type for this property
     private Object refunds;  // You may need to define a specific type for this property
+    private List<Split> split;
 
     public static PaymentCreator creator() {
         return new PaymentCreator();
@@ -425,6 +428,15 @@ public class Payment {
 
     public Payment setInstallment(String installment) {
         this.installment = installment;
+        return this;
+    }
+
+    public List<Split> getSplit() {
+        return split;
+    }
+
+    public Payment setSplit(List<Split> split) {
+        this.split = split;
         return this;
     }
 }

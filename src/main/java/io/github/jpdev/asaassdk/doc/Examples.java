@@ -2,7 +2,6 @@ package io.github.jpdev.asaassdk.doc;
 
 import io.github.jpdev.asaassdk.http.Asaas;
 import io.github.jpdev.asaassdk.rest.accounts.Account;
-import io.github.jpdev.asaassdk.rest.accounts.AccountCreator;
 import io.github.jpdev.asaassdk.rest.action.ResourceSet;
 import io.github.jpdev.asaassdk.rest.bill.Bill;
 import io.github.jpdev.asaassdk.rest.commons.DeletedResource;
@@ -18,6 +17,7 @@ import io.github.jpdev.asaassdk.rest.myaccount.fee.AccountFee;
 import io.github.jpdev.asaassdk.rest.myaccount.status.MyAccountStatus;
 import io.github.jpdev.asaassdk.rest.notification.NotificationConfig;
 import io.github.jpdev.asaassdk.rest.payment.Payment;
+import io.github.jpdev.asaassdk.rest.payment.children.SplitSetting;
 import io.github.jpdev.asaassdk.rest.payment.enums.PaymentLinkChargeType;
 import io.github.jpdev.asaassdk.rest.payment.enums.PaymentStatus;
 import io.github.jpdev.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
@@ -36,16 +36,10 @@ import io.github.jpdev.asaassdk.rest.subscription.Subscription;
 import io.github.jpdev.asaassdk.rest.subscription.SubscriptionCycle;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.*;
-import io.github.jpdev.asaassdk.rest.webhook.Event;
-import io.github.jpdev.asaassdk.rest.webhook.SendType;
-import io.github.jpdev.asaassdk.rest.webhook.Webhook;
-import io.github.jpdev.asaassdk.rest.webhook.WebhookReader;
 import io.github.jpdev.asaassdk.utils.BillingType;
 import io.github.jpdev.asaassdk.utils.Money;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +47,28 @@ public class Examples {
 
     public static void main(String[] args) {
         Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
-        paging();
+        splittedPayment();
+    }
+
+    private static void splittedPayment() {
+        Account account = createFirstAccountIfNecessary();
+
+        SplitSetting split1 = new SplitSetting()
+                .setWalletId(account.getWalletId())
+                .setFixedValue(Money.create(10));
+
+        CustomerAccount customerAccount = CustomerAccount.reader().read().getData().get(0);
+
+        Payment payment = Payment.creator()
+                .setCustomer(customerAccount.id)
+                .setBillingType(BillingType.PIX)
+                .setDueDate(new Date())
+                .addSplit(split1)
+                .setValue(Money.create(100))
+                .setDescription("Teste")
+                .create();
+
+        System.out.println(payment.getSplit().get(0).getId().toString());
     }
 
     private static void paging() {
@@ -304,5 +319,21 @@ public class Examples {
                 .setValue(Money.create(100))
                 .setDescription("Teste")
                 .create();
+    }
+
+    private static Account createFirstAccountIfNecessary() {
+        List<Account> accounts = Account.reader().read().getData();
+        if (accounts.isEmpty()) {
+            return Account.creator()
+                    .setName("Teste sub conta")
+                    .setBirthDate(new Date())
+                    .setCompanyType("LIMITED")
+                    .setEmail("joaoexample2@gmail.com")
+                    .setPostalCode("36572122")
+                    .setIncomeValue(Money.create(1000))
+                    .setCpfCnpj("87.326.705/0001-81")
+                    .create();
+        }
+        return accounts.get(0);
     }
 }

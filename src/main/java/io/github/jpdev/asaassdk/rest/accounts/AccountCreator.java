@@ -3,6 +3,7 @@ package io.github.jpdev.asaassdk.rest.accounts;
 import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Creator;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class AccountCreator extends Creator<Account> {
     String complement;
     String province;
     String postalCode;
+    BigDecimal incomeValue;
     List<Webhook> webhooks;
 
     public String getName() {
@@ -157,6 +159,15 @@ public class AccountCreator extends Creator<Account> {
     public AccountCreator setWebhooks(List<Webhook> webhooks) {
         this.webhooks = webhooks;
         return this;
+    }
+
+    public AccountCreator setIncomeValue(BigDecimal incomeValue) {
+        this.incomeValue = incomeValue;
+        return this;
+    }
+
+    public BigDecimal getIncomeValue() {
+        return incomeValue;
     }
 
     @Override
