@@ -4,13 +4,11 @@ import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Creator;
 import io.github.jpdev.asaassdk.rest.payment.children.DiscountSetting;
 import io.github.jpdev.asaassdk.rest.payment.children.SplitSetting;
-import io.github.jpdev.asaassdk.rest.payment.split.Split;
 import io.github.jpdev.asaassdk.utils.BillingType;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class PaymentCreator extends Creator<Payment> {
 
