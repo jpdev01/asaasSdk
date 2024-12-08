@@ -6,7 +6,7 @@ import io.github.jpdev.asaassdk.rest.payment.children.Interest;
 import io.github.jpdev.asaassdk.rest.payment.delete.PaymentDeleter;
 import io.github.jpdev.asaassdk.rest.payment.identificationfield.PaymentIdentificationFieldFetcher;
 import io.github.jpdev.asaassdk.rest.payment.restore.PaymentRestorer;
-import io.github.jpdev.asaassdk.rest.payment.split.Split;
+import io.github.jpdev.asaassdk.rest.paymentsplit.Split;
 import io.github.jpdev.asaassdk.rest.payment.status.PaymentStatusFetcher;
 import io.github.jpdev.asaassdk.utils.BillingType;
 import io.github.jpdev.asaassdk.rest.payment.enums.PaymentStatus;

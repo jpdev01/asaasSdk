@@ -18,6 +18,8 @@ public enum Domain {
     CUSTOMER_ACCOUNT_NOTIFICATIONS("customers/$id/notifications"),
     PAYMENT_STATUS("payments/$id/status"),
     PAYMENT_RESTORE("payments/$id/restore"),
+    PAYMENT_SPLIT_RECEIVED("payments/splits/received"),
+    PAYMENT_SPLIT_PAID("payments/splits/paid"),
     INSTALLMENT("installments"),
     FINANCE_BALANCE("finance/balance"),
     PAYMENT_LINK("paymentLinks"),

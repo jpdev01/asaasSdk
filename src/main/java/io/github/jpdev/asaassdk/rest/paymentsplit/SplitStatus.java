@@ -1,4 +1,4 @@
-package io.github.jpdev.asaassdk.rest.payment.split;
+package io.github.jpdev.asaassdk.rest.paymentsplit;
 
 public enum SplitStatus {
 
