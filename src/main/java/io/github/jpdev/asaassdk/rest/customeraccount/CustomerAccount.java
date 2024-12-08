@@ -42,6 +42,10 @@ public class CustomerAccount {
         return new CustomerAccountFetcher(id);
     }
 
+    public static CustomerAccountReader reader() {
+        return new CustomerAccountReader();
+    }
+
     public String getObject() {
         return object;
     }
