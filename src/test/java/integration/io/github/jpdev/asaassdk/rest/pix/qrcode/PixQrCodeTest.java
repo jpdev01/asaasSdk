@@ -36,5 +36,6 @@ public class PixQrCodeTest {
 
         assertNotNull(qrCode, "QR Code não criado.");
         assertNotNull(qrCode.expirationDate);
+        assertNotNull(qrCode.payload);
     }
 }
