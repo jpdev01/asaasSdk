@@ -27,7 +27,7 @@ public class PixTransactionTest {
     @DisplayName("Integração | Criação de transação Pix com chave")
     @Order(1)
     void testCreatePixKey() {
-        BigDecimal value = Money.create(new Random(100).nextDouble());
+        BigDecimal value = buildValue();
 
         Transfer transfer = Transfer.pixAddressKeyCreator()
                 .setPixAddressKey("+5547999999999")
@@ -75,5 +75,10 @@ public class PixTransactionTest {
         assertNotNull(transfer.getId(), "ID da transferência não encontrado.");
         assertNotNull(transfer.getValue(), "Valor da transferência não encontrado.");
         assertNotNull(transfer.getDateCreated());
+    }
+
+    private BigDecimal buildValue() {
+        int value = new Random().nextInt(100) + 1;
+        return Money.create(value);
     }
 }

@@ -13,4 +13,9 @@ public class Money {
         BigDecimal parsed = new BigDecimal(value);
         return create(parsed);
     }
+
+    public static BigDecimal create(int value) {
+        BigDecimal parsed = new BigDecimal(value);
+        return create(parsed);
+    }
 }
