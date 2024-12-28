@@ -27,14 +27,7 @@ public class PaymentTest {
     @DisplayName("Integração | Criação de cobrança Pix")
     @Order(1)
     void testCreatePixKey() {
-        CustomerAccount customerAccount = CustomerAccount.reader().read().getData().stream().findFirst().orElse(null);
-        if (customerAccount == null) {
-            customerAccount = CustomerAccount.creator()
-                    .setName("Teste unitário")
-                    .setCpfCnpj("06928316000124")
-                    .setEmail("integration_example@gmail.com")
-                    .create();
-        }
+        CustomerAccount customerAccount = getCustomerAccount();
 
         BigDecimal value = Money.create(5.01);
         Date dueDate = getDueDate();
@@ -58,6 +51,35 @@ public class PaymentTest {
         assertEquals(externalReference, payment.getExternalReference(), "Referência externa incorreta.");
     }
 
+    @Test
+    @Tag("integration")
+    @DisplayName("Integração | Criação de cobrança boleto")
+    @Order(2)
+    void testBoleto() {
+        CustomerAccount customerAccount = getCustomerAccount();
+
+        BigDecimal value = Money.create(5.01);
+        Date dueDate = getDueDate();
+        String description = "Teste unitário " + UUID.randomUUID();
+        String externalReference = UUID.randomUUID().toString();
+
+        Payment payment = Payment.creator()
+                .setBillingType(BillingType.BOLETO)
+                .setCustomer(customerAccount.getId())
+                .setValue(value)
+                .setDueDate(dueDate)
+                .setDescription(description)
+                .setExternalReference(externalReference)
+                .create();
+
+        assertNotNull(payment, "Cobrança não criada.");
+        assertEquals(BillingType.BOLETO, payment.getBillingType(), "Tipo de cobrança incorreto.");
+        assertEquals(value, Money.create(payment.getValue()), "Valor da cobrança incorreto.");
+        assertEquals(dueDate, payment.getDueDate(), "Data de vencimento incorreta.");
+        assertEquals(description, payment.getDescription(), "Descrição da cobrança incorreta.");
+        assertEquals(externalReference, payment.getExternalReference(), "Referência externa incorreta.");
+    }
+
     private Date getDueDate() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -69,5 +91,18 @@ public class PaymentTest {
         calendar.set(Calendar.MILLISECOND, 0);
 
         return calendar.getTime();
+    }
+
+    private CustomerAccount getCustomerAccount() {
+        CustomerAccount customerAccount = CustomerAccount.reader().read().getData().stream().findFirst().orElse(null);
+        if (customerAccount == null) {
+            customerAccount = CustomerAccount.creator()
+                    .setName("Teste unitário")
+                    .setCpfCnpj("06928316000124")
+                    .setEmail("integration_example@gmail.com")
+                    .create();
+        }
+
+        return customerAccount;
     }
 }
