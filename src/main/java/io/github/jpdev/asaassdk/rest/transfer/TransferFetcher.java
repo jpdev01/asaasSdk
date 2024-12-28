@@ -1,5 +1,6 @@
 package io.github.jpdev.asaassdk.rest.transfer;
 
+import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Fetcher;
 
 public class TransferFetcher extends Fetcher<Transfer> {
@@ -13,11 +14,11 @@ public class TransferFetcher extends Fetcher<Transfer> {
 
     @Override
     public String getResourceUrl() {
-        return "";
+        return Domain.TRANSFER.addPathVariable(this.id);
     }
 
     @Override
     public Class<Transfer> getResourceClass() {
-        return null;
+        return Transfer.class;
     }
 }
