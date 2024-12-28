@@ -23,6 +23,7 @@ The API official documentation can be found [here](https://docs.asaas.com/docs/v
 - [Pix - QR Code e Chaves](pix_dict.md)
 - [Pix - Transações](pix_dict.md)
 - [Cobrança](payment.md)
+- [Cobrança com split](payment_split.md)
 - [Clientes](customeraccount.md)
 - [Pague contas](bill.md)
 - [Dados comerciais](commercialinfo.md)

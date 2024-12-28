@@ -71,3 +71,6 @@ PaymentDeleted paymentDeleted = Payment.deleter(payment.getId()).delete();
 ```java
 Payment payment = Payment.restorer(payment.getId()).create();
 ```
+
+## Relacionados
+- [Cobrança com Split](payment_split.md)
