@@ -25,6 +25,11 @@ public class Asaas {
         Asaas.token = token;
     }
 
+    public static void clear() {
+        Asaas.token = null;
+        Asaas.restClient = null;
+    }
+
     public static void setTimeout(Integer timeout) {
         Asaas.timeout = timeout;
     }
