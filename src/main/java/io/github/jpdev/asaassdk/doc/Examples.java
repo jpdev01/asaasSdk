@@ -23,6 +23,7 @@ import io.github.jpdev.asaassdk.rest.payment.enums.PaymentStatus;
 import io.github.jpdev.asaassdk.rest.payment.identificationfield.PaymentIdentificationField;
 import io.github.jpdev.asaassdk.rest.payment.status.PaymentStatusData;
 import io.github.jpdev.asaassdk.rest.paymentlink.PaymentLink;
+import io.github.jpdev.asaassdk.rest.paymentsplit.Split;
 import io.github.jpdev.asaassdk.rest.pix.addresskey.PixAddressKey;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyStatus;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
@@ -69,6 +70,8 @@ public class Examples {
                 .create();
 
         System.out.println(payment.getSplit().get(0).getId().toString());
+
+        System.out.println(Split.paidReader().read().getData().size());
     }
 
     private static void paging() {
