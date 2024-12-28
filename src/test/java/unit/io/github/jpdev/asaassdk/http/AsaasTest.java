@@ -1,10 +1,11 @@
-package io.github.jpdev.asaassdk.http;
+package unit.io.github.jpdev.asaassdk.http;
 
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
-import io.github.jpdev.asaassdk.AsaasClientMock;
+import integration.io.github.jpdev.asaassdk.AsaasClientMock;
 import io.github.jpdev.asaassdk.exception.ConnectionException;
+import io.github.jpdev.asaassdk.http.Asaas;
 import io.github.jpdev.asaassdk.rest.payment.Payment;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

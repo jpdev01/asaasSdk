@@ -1,16 +1,11 @@
-package io.github.jpdev.asaassdk.rest.pix.transaction;
+package integration.io.github.jpdev.asaassdk.rest.pix.transaction;
 
-import io.github.jpdev.asaassdk.AsaasClientMock;
-import io.github.jpdev.asaassdk.http.Asaas;
-import io.github.jpdev.asaassdk.rest.action.ResourceSet;
+import integration.io.github.jpdev.asaassdk.AsaasClientMock;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.response.TransferOperationType;
 import io.github.jpdev.asaassdk.utils.Money;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -27,6 +22,7 @@ public class PixTransactionTest {
     }
 
     @Test
+    @Tag("integration")
     @DisplayName("Integração | Criação de transação Pix com chave")
     @Order(1)
     void testCreatePixKey() {
@@ -46,6 +42,7 @@ public class PixTransactionTest {
     }
 
     @Test
+    @Tag("integration")
     @DisplayName("Integração | Leitura de transação Pix")
     @Order(2)
     void testListing() {
@@ -61,6 +58,7 @@ public class PixTransactionTest {
     }
 
     @Test
+    @Tag("integration")
     @DisplayName("Integração | Leitura de transação Pix por ID")
     @Order(3)
     void testReadById() {

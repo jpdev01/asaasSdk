@@ -1,4 +1,4 @@
-package io.github.jpdev.asaassdk;
+package integration.io.github.jpdev.asaassdk;
 
 import io.github.jpdev.asaassdk.http.Asaas;
 
