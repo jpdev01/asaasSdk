@@ -1,6 +1,7 @@
 package integration.io.github.jpdev.asaassdk.rest.pix.transaction;
 
 import integration.io.github.jpdev.asaassdk.AsaasClientMock;
+import integration.io.github.jpdev.asaassdk.CustomMockUtils;
 import io.github.jpdev.asaassdk.rest.pix.enums.PixAddressKeyType;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.response.TransferOperationType;
@@ -27,7 +28,7 @@ public class PixTransactionTest {
     @DisplayName("Integração | Criação de transação Pix com chave")
     @Order(1)
     void testCreatePixKey() {
-        BigDecimal value = buildValue();
+        BigDecimal value = CustomMockUtils.randomValue();
 
         Transfer transfer = Transfer.pixAddressKeyCreator()
                 .setPixAddressKey("+5547999999999")
@@ -75,10 +76,5 @@ public class PixTransactionTest {
         assertNotNull(transfer.getId(), "ID da transferência não encontrado.");
         assertNotNull(transfer.getValue(), "Valor da transferência não encontrado.");
         assertNotNull(transfer.getDateCreated());
-    }
-
-    private BigDecimal buildValue() {
-        int value = new Random().nextInt(100) + 1;
-        return Money.create(value);
     }
 }

@@ -5,6 +5,10 @@ public class PixRecurring {
     PixRecurringFrequency frequency;
     int quantity;
 
+    public static PixRecurringFetcher fetcher(String id) {
+        return new PixRecurringFetcher(id);
+    }
+
     public PixRecurringFrequency getFrequency() {
         return frequency;
     }
