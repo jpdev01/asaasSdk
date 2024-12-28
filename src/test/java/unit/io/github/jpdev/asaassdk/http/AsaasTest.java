@@ -27,9 +27,9 @@ class AsaasTest {
     @Test
     @DisplayName("Teste de token incorreto")
     void testIncorrectToken() {
-        assumeTrue(Asaas.getRestClient() != null, "Token da API não configurado.");
-
-        Asaas.setToken("incorrectToken");
+        Asaas.clear();
+        Asaas.initSandbox("incorrectToken");
         assertThrowsExactly(ConnectionException.class, () -> Payment.reader().read());
+        Asaas.clear();
     }
 }

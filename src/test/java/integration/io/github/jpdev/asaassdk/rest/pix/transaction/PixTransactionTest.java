@@ -9,6 +9,7 @@ import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -26,7 +27,7 @@ public class PixTransactionTest {
     @DisplayName("Integração | Criação de transação Pix com chave")
     @Order(1)
     void testCreatePixKey() {
-        BigDecimal value = BigDecimal.valueOf(0.01);
+        BigDecimal value = Money.create(new Random(100).nextDouble());
 
         Transfer transfer = Transfer.pixAddressKeyCreator()
                 .setPixAddressKey("+5547999999999")
