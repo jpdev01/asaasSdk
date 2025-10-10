@@ -2,10 +2,10 @@
 
 This SDK was built by @jpdev01 to facilitate the development of integrations with [Asaas](https://asaas.com.br)
 
-## User Guide
+## 1. User Guide
 Setup and usage is described in our [User Guide](https://jpdev01.github.io/asaasSdk/)
 
-## Installation
+## 2. Installation
 The recommended way to use the AWS SDK for Java in your project is to consume it from Maven Central. (includes all modules present in the API).
 
 ```xml
@@ -16,8 +16,10 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 </dependency>
 ```
 
-The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
-
-## SonarQube
+## 3. SonarQube
 
 The project is continuously analyzed by SonarQube and the report can be found [here](https://sonarcloud.io/summary/overall?id=jpdev01_asaasSdk)
+
+## 4. Asaas Documentation
+
+The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
