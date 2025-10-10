@@ -17,3 +17,7 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 ```
 
 The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
+
+## SonarQube
+
+The project is continuously analyzed by SonarQube and the report can be found [here](https://sonarcloud.io/summary/overall?id=jpdev01_asaasSdk)
