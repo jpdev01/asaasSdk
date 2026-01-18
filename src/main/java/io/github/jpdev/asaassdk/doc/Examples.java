@@ -33,8 +33,9 @@ import io.github.jpdev.asaassdk.rest.pix.qrcode.PixQrCode;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
 import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransaction;
 import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransactionReader;
-import io.github.jpdev.asaassdk.rest.subscription.Subscription;
-import io.github.jpdev.asaassdk.rest.subscription.SubscriptionCycle;
+import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.PixAutomaticAuthorization;
+import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.immediate.ImmediateQrCodeCreator;
+import io.github.jpdev.asaassdk.rest.subscription.*;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.*;
 import io.github.jpdev.asaassdk.utils.BillingType;
@@ -42,6 +43,7 @@ import io.github.jpdev.asaassdk.utils.Money;
 import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationFrequency;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -50,7 +52,8 @@ public class Examples {
 
     public static void main(String[] args) {
         Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
-        splittedPayment();
+        createPixAuthorization();
+        readPixAutomaticAuthorizations();
     }
 
     private static void createPixAuthorization() {
@@ -75,6 +78,12 @@ public class Examples {
 
         System.out.println(authorization.getId());
         System.out.println(authorization.getImmediateQrCode().getExpirationDate());
+    }
+
+    private static void readPixAutomaticAuthorizations() {
+        for (PixAutomaticAuthorization authorization : PixAutomaticAuthorization.reader().read().getData()) {
+            System.out.println(authorization.getContractId());
+        }
     }
 
     private static void splittedPayment() {

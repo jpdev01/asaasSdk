@@ -36,6 +36,14 @@ public class PixAutomaticAuthorization {
         return new PixAutomaticAuthorizationCreator();
     }
 
+    public static PixAutomaticAuthorizationFetcher fetcher(String id) {
+        return new PixAutomaticAuthorizationFetcher(id);
+    }
+
+    public static PixAutomaticAuthorizationReader reader() {
+        return new PixAutomaticAuthorizationReader();
+    }
+
     public String getId() {
         return id;
     }
