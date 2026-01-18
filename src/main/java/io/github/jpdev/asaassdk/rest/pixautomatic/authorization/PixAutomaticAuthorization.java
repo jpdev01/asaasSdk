@@ -44,6 +44,10 @@ public class PixAutomaticAuthorization {
         return new PixAutomaticAuthorizationReader();
     }
 
+    public static PixAutomaticAuthorizationDeleter deleter(String id) {
+        return new PixAutomaticAuthorizationDeleter(id);
+    }
+
     public String getId() {
         return id;
     }
