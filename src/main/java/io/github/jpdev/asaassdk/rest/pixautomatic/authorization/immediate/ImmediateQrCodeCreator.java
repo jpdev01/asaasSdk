@@ -28,4 +28,20 @@ public class ImmediateQrCodeCreator {
         this.description = description;
         return this;
     }
+
+    public String getPixKey() {
+        return pixKey;
+    }
+
+    public Integer getExpirationSeconds() {
+        return expirationSeconds;
+    }
+
+    public BigDecimal getOriginalValue() {
+        return originalValue;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

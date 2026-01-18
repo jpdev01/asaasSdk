@@ -6,4 +6,12 @@ public class ImmediateQrCode {
 
     private String conciliationIdentifier;
     private Date expirationDate;
+
+    public String getConciliationIdentifier() {
+        return conciliationIdentifier;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
 }

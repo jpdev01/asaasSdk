@@ -39,16 +39,42 @@ import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.*;
 import io.github.jpdev.asaassdk.utils.BillingType;
 import io.github.jpdev.asaassdk.utils.Money;
+import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationFrequency;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class Examples {
 
     public static void main(String[] args) {
         Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
         splittedPayment();
+    }
+
+    private static void createPixAuthorization() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        Date startDate = calendar.getTime();
+
+        ImmediateQrCodeCreator immediateQrCodeCreator = new ImmediateQrCodeCreator()
+            .setDescription("teste")
+            .setExpirationSeconds(3600)
+            .setOriginalValue(Money.create(10));
+
+        String contractId = String.valueOf(new Random().nextInt(10000));
+        PixAutomaticAuthorization authorization = PixAutomaticAuthorization.creator()
+            .setCustomerId("cus_000007258649")
+            .setStartDate(startDate)
+            .setFrequency(PixAutomaticAuthorizationFrequency.MONTHLY)
+            .setValue(Money.create(100))
+            .setContractId("CONTRACT_IIDD" + contractId)
+            .setImmediateQrCode(immediateQrCodeCreator)
+            .create();
+
+        System.out.println(authorization.getId());
+        System.out.println(authorization.getImmediateQrCode().getExpirationDate());
     }
 
     private static void splittedPayment() {

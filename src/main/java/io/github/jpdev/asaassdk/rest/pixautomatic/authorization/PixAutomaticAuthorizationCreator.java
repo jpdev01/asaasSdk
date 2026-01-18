@@ -1,5 +1,6 @@
 package io.github.jpdev.asaassdk.rest.pixautomatic.authorization;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Creator;
 import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.immediate.ImmediateQrCodeCreator;
@@ -8,11 +9,12 @@ import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationFrequency;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PixAutomaticAuthorizationCreator extends Creator<PixAutomaticAuthorization> {
 
     private Date startDate;
     private Date finishDate;
-    private String customer;
+    private String customerId;
     private PixAutomaticAuthorizationFrequency frequency;
     private String contractId;
     private BigDecimal value;
@@ -30,8 +32,8 @@ public class PixAutomaticAuthorizationCreator extends Creator<PixAutomaticAuthor
         return this;
     }
 
-    public PixAutomaticAuthorizationCreator setCustomer(String customer) {
-        this.customer = customer;
+    public PixAutomaticAuthorizationCreator setCustomerId(String customerId) {
+        this.customerId = customerId;
         return this;
     }
 
@@ -63,6 +65,42 @@ public class PixAutomaticAuthorizationCreator extends Creator<PixAutomaticAuthor
     public PixAutomaticAuthorizationCreator setImmediateQrCode(ImmediateQrCodeCreator immediateQrCode) {
         this.immediateQrCode = immediateQrCode;
         return this;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getFinishDate() {
+        return finishDate;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public PixAutomaticAuthorizationFrequency getFrequency() {
+        return frequency;
+    }
+
+    public String getContractId() {
+        return contractId;
+    }
+
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getMinLimitValue() {
+        return minLimitValue;
+    }
+
+    public ImmediateQrCodeCreator getImmediateQrCode() {
+        return immediateQrCode;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package io.github.jpdev.asaassdk.rest.pixautomatic.authorization;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.immediate.ImmediateQrCode;
 import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.immediate.ImmediateQrCodeCreator;
 import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationFrequency;
@@ -9,6 +10,7 @@ import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationStatus;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PixAutomaticAuthorization {
 
     private String id;
