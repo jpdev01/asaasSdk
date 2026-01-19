@@ -54,6 +54,9 @@ jobs:
                   </settings>
                   EOF
 
+            -   name: Debug settings
+                run: cat ~/.m2/settings.xml
+
             # 🚀 Deploy
             - name: Maven deploy
               run: mvn clean deploy -P release -Dmaven.test.skip=true
