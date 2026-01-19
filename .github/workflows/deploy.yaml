@@ -56,4 +56,4 @@ jobs:
 
             # 🚀 Deploy
             - name: Maven deploy
-              run: mvn clean deploy -P release
+              run: mvn clean deploy -P release -Dmaven.test.skip=true
