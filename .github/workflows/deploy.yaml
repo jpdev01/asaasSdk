@@ -35,7 +35,7 @@ jobs:
                       <server>
                         <id>ossrh</id>
                         <username>${{ secrets.OSSRH_USERNAME }}</username>
-                        <password>${{ secrets.OSSRH_PASSWORD }}</password>
+                        <password>${{ secrets.OSSRH_TOKEN }}</password>
                       </server>
                     </servers>
 
