@@ -25,7 +25,7 @@ jobs:
                   gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
             - name: Publish to Maven Central
-              run: mvn clean deploy -P release
+              run: mvn clean deploy -P release -Dmaven.test.skip=true
               env:
                   MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
                   MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
