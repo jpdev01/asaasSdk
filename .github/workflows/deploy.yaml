@@ -60,3 +60,8 @@ jobs:
             # 🚀 Deploy
             - name: Maven deploy
               run: mvn clean deploy -P release -Dmaven.test.skip=true
+              env:
+                  OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+                  OSSRH_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+                  GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+                  GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
