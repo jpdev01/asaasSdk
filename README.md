@@ -12,7 +12,7 @@ The recommended way to use the AWS SDK for Java in your project is to consume it
 <dependency>
     <groupId>io.github.jpdev01</groupId>
     <artifactId>asaassdk</artifactId>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.4</version>
 </dependency>
 ```
 
@@ -26,3 +26,5 @@ The API official documentation can be found [here](https://docs.asaas.com/docs/v
 
 ## 5. Deploy
 ![Deploy](./deploy.png)
+
+Check out the available versions on [Maven Repository](https://repo1.maven.org/maven2/io/github/jpdev01/asaassdk/)
