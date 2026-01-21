@@ -33,7 +33,9 @@ public enum Domain {
     ACCOUNT("accounts"),
     SUBSCRIPTION("subscriptions"),
     WEBHOOK("webhooks"),
-    PIX_RECURRING("pix/transactions/recurrings");
+    PIX_RECURRING("pix/transactions/recurrings"),
+    PIX_AUTOMATIC_AUTHORIZATION("pix/automatic/authorizations"),
+    PIX_AUTOMATIC_PAYMENT_INSTRUCTION("pix/automatic/paymentInstructions");
 
     private final String value;
 

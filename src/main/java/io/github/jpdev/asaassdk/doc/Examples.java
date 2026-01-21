@@ -33,25 +33,60 @@ import io.github.jpdev.asaassdk.rest.pix.qrcode.PixQrCode;
 import io.github.jpdev.asaassdk.rest.pix.qrcode.decode.PixDecodedQrCode;
 import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransaction;
 import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransactionReader;
-import io.github.jpdev.asaassdk.rest.subscription.Subscription;
-import io.github.jpdev.asaassdk.rest.subscription.SubscriptionCycle;
+import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.PixAutomaticAuthorization;
+import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.immediate.ImmediateQrCodeCreator;
+import io.github.jpdev.asaassdk.rest.subscription.*;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.*;
 import io.github.jpdev.asaassdk.utils.BillingType;
 import io.github.jpdev.asaassdk.utils.Money;
+import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationFrequency;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class Examples {
 
     public static void main(String[] args) {
         Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
-        splittedPayment();
+        createPixAuthorization();
+        readPixAutomaticAuthorizations();
     }
 
-    private static void splittedPayment() {
+    private static void createPixAuthorization() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        Date startDate = calendar.getTime();
+
+        ImmediateQrCodeCreator immediateQrCodeCreator = new ImmediateQrCodeCreator()
+            .setDescription("teste")
+            .setExpirationSeconds(3600)
+            .setOriginalValue(Money.create(10));
+
+        String contractId = String.valueOf(System.currentTimeMillis());
+        PixAutomaticAuthorization authorization = PixAutomaticAuthorization.creator()
+            .setCustomerId("cus_000007258649")
+            .setStartDate(startDate)
+            .setFrequency(PixAutomaticAuthorizationFrequency.MONTHLY)
+            .setValue(Money.create(100))
+            .setContractId("CONTRACT_IIDD" + contractId)
+            .setImmediateQrCode(immediateQrCodeCreator)
+            .create();
+
+        assert authorization.getId() != null;
+        assert authorization.getImmediateQrCode().getExpirationDate() != null;
+    }
+
+    private static void readPixAutomaticAuthorizations() {
+        for (PixAutomaticAuthorization authorization : PixAutomaticAuthorization.reader().read().getData()) {
+            assert authorization.getContractId() != null;
+        }
+    }
+
+    private static void createPaymentWithSplit() {
         Account account = createFirstAccountIfNecessary();
 
         SplitSetting split1 = new SplitSetting()
