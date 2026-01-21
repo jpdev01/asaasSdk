@@ -76,17 +76,17 @@ public class Examples {
             .setImmediateQrCode(immediateQrCodeCreator)
             .create();
 
-        System.out.println(authorization.getId());
-        System.out.println(authorization.getImmediateQrCode().getExpirationDate());
+        assert authorization.getId() != null;
+        assert authorization.getImmediateQrCode().getExpirationDate() != null;
     }
 
     private static void readPixAutomaticAuthorizations() {
         for (PixAutomaticAuthorization authorization : PixAutomaticAuthorization.reader().read().getData()) {
-            System.out.println(authorization.getContractId());
+            assert authorization.getContractId() != null;
         }
     }
 
-    private static void splittedPayment() {
+    private static void createPaymentWithSplit() {
         Account account = createFirstAccountIfNecessary();
 
         SplitSetting split1 = new SplitSetting()
