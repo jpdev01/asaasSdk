@@ -35,6 +35,7 @@ import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransaction;
 import io.github.jpdev.asaassdk.rest.pix.transaction.PixTransactionReader;
 import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.PixAutomaticAuthorization;
 import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.immediate.ImmediateQrCodeCreator;
+import io.github.jpdev.asaassdk.rest.pixautomatic.paymentinstruction.PixAutomaticPaymentInstruction;
 import io.github.jpdev.asaassdk.rest.subscription.*;
 import io.github.jpdev.asaassdk.rest.transfer.Transfer;
 import io.github.jpdev.asaassdk.rest.transfer.children.*;
@@ -54,6 +55,7 @@ public class Examples {
         Asaas.initSandbox(Secret.getAccessToken()); // Initialize the SDK with your access token
         createPixAuthorization();
         readPixAutomaticAuthorizations();
+        readPaymentInstructions();
     }
 
     private static void createPixAuthorization() {
@@ -84,6 +86,19 @@ public class Examples {
         for (PixAutomaticAuthorization authorization : PixAutomaticAuthorization.reader().read().getData()) {
             assert authorization.getContractId() != null;
         }
+    }
+
+    private static void readPaymentInstructions() {
+        List<PixAutomaticPaymentInstruction> paymentInstructionList = PixAutomaticPaymentInstruction.reader().read().getData();
+        paymentInstructionList.forEach(it -> {
+            assert it.getId() != null;
+            assert it.getDueDate() != null;
+        });
+
+        PixAutomaticPaymentInstruction fetchedPaymentInstruction = PixAutomaticPaymentInstruction.fetcher(paymentInstructionList.get(0).getId()).fetch();
+        assert fetchedPaymentInstruction.getPaymentId() != null;
+        assert fetchedPaymentInstruction.getDueDate() != null;
+        assert fetchedPaymentInstruction.getAuthorization() != null;
     }
 
     private static void createPaymentWithSplit() {
