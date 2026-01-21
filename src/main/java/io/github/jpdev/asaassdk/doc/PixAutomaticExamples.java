@@ -5,10 +5,8 @@ import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.PixAutomaticAuth
 import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.PixAutomaticAuthorizationReader;
 import io.github.jpdev.asaassdk.rest.pixautomatic.authorization.immediate.ImmediateQrCodeCreator;
 import io.github.jpdev.asaassdk.rest.pixautomatic.paymentinstruction.PixAutomaticPaymentInstruction;
-import io.github.jpdev.asaassdk.utils.BillingType;
-import io.github.jpdev.asaassdk.utils.Money;
-import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationFrequency;
-import io.github.jpdev.asaassdk.utils.PixAutomaticAuthorizationStatus;
+import io.github.jpdev.asaassdk.rest.pixautomatic.paymentinstruction.PixAutomaticPaymentInstructionReader;
+import io.github.jpdev.asaassdk.utils.*;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,10 +16,7 @@ import java.util.Optional;
 public class PixAutomaticExamples {
 
     public static void start() {
-        createPixAuthorization();
-        readPixAutomaticAuthorizations();
-        readPaymentInstructions();
-        createPaymentInstruction();
+        cancelAuthorization();
     }
 
     private static void createPixAuthorization() {
@@ -104,5 +99,18 @@ public class PixAutomaticExamples {
         assert fetchedPaymentInstruction.getPaymentId() != null;
         assert fetchedPaymentInstruction.getDueDate() != null;
         assert fetchedPaymentInstruction.getAuthorization() != null;
+    }
+
+    private static void cancelAuthorization() {
+        List<PixAutomaticAuthorization> authorizationList = PixAutomaticAuthorization.reader().read().getData();
+
+        Optional<PixAutomaticAuthorization> cancellable = authorizationList.stream().filter(it -> it.getStatus() == PixAutomaticAuthorizationStatus.CREATED).findFirst();
+        assert cancellable.isPresent();
+
+        PixAutomaticAuthorization cancelledAuthorization = PixAutomaticAuthorization.deleter(cancellable.get().getId()).delete();
+
+        assert cancelledAuthorization.getStatus() == PixAutomaticAuthorizationStatus.CANCELLED;
+        assert cancelledAuthorization.getId() != null;
+        assert cancelledAuthorization.getId().equals(cancellable.get().getId());
     }
 }
