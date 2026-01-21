@@ -26,3 +26,5 @@ The API official documentation can be found [here](https://docs.asaas.com/docs/v
 
 ## 5. Deploy
 ![Deploy](./deploy.png)
+
+Check out the available versions on [Maven Repository](https://repo1.maven.org/maven2/io/github/jpdev01/asaassdk/)
