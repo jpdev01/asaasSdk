@@ -23,3 +23,6 @@ The project is continuously analyzed by SonarQube and the report can be found [h
 ## 4. Asaas Documentation
 
 The API official documentation can be found [here](https://docs.asaas.com/docs/visao-geral)
+
+## 5. Deploy
+![Deploy](./deploy.png)
