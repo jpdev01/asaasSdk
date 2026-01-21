@@ -66,7 +66,7 @@ public class Examples {
             .setExpirationSeconds(3600)
             .setOriginalValue(Money.create(10));
 
-        String contractId = String.valueOf(new Random().nextInt(10000));
+        String contractId = String.valueOf(System.currentTimeMillis());
         PixAutomaticAuthorization authorization = PixAutomaticAuthorization.creator()
             .setCustomerId("cus_000007258649")
             .setStartDate(startDate)
