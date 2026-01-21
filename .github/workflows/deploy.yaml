@@ -19,13 +19,13 @@ jobs:
                   java-version: '11'
                   cache: maven
 
-            # 🔐 Importa GPG
+            # Importa GPG
             - name: Import GPG key
               run: |
                   echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
                   gpg --list-secret-keys --keyid-format LONG
 
-            # ⚙️ Cria settings.xml dinâmico
+            # Cria settings.xml dinâmico
             - name: Create Maven settings.xml
               run: |
                   mkdir -p ~/.m2
@@ -57,7 +57,7 @@ jobs:
             -   name: Debug settings
                 run: cat ~/.m2/settings.xml
 
-            # 🚀 Deploy
+            # Deploy
             - name: Maven deploy
               run: mvn clean deploy -Dmaven.test.skip=true
               env:
