@@ -30,6 +30,8 @@ public class PaymentCreator extends Creator<Payment> {
 
     ArrayList<SplitSetting> split;
 
+    String pixAutomaticAuthorizationId;
+
     public String getCustomer() {
         return customer;
     }
@@ -133,6 +135,15 @@ public class PaymentCreator extends Creator<Payment> {
 
     public ArrayList<SplitSetting> getSplit() {
         return split;
+    }
+
+    public String getPixAutomaticAuthorizationId() {
+        return pixAutomaticAuthorizationId;
+    }
+
+    public PaymentCreator setPixAutomaticAuthorizationId(String pixAutomaticAuthorizationId) {
+        this.pixAutomaticAuthorizationId = pixAutomaticAuthorizationId;
+        return this;
     }
 
     @Override

@@ -4,7 +4,7 @@ import io.github.jpdev.asaassdk.http.Domain;
 import io.github.jpdev.asaassdk.rest.action.Deleter;
 import io.github.jpdev.asaassdk.rest.commons.DeletedResource;
 
-public class PixAutomaticAuthorizationDeleter extends Deleter<DeletedResource> {
+public class PixAutomaticAuthorizationDeleter extends Deleter<PixAutomaticAuthorization> {
 
     private final String id;
 
@@ -18,7 +18,7 @@ public class PixAutomaticAuthorizationDeleter extends Deleter<DeletedResource> {
     }
 
     @Override
-    public Class<DeletedResource> getResourceClass() {
-        return DeletedResource.class;
+    public Class<PixAutomaticAuthorization> getResourceClass() {
+        return PixAutomaticAuthorization.class;
     }
 }
