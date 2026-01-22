@@ -44,7 +44,7 @@ public class Main {
     public static void main(String[] args) {
         // Ambiente de produção
         Asaas.init("sua_chave_api_producao");
-        
+
         // OU ambiente sandbox (para testes)
         // Asaas.initSandbox("sua_chave_api_sandbox");
     }
@@ -104,7 +104,7 @@ public class ExemploCompleto {
             // 1. Inicializar SDK
             Asaas.init("sua_chave_api");
             System.out.println("✅ SDK inicializado");
-            
+
             // 2. Criar cliente
             CustomerAccount cliente = CustomerAccount.creator()
                 .setName("Maria Santos")
@@ -112,9 +112,9 @@ public class ExemploCompleto {
                 .setEmail("maria@exemplo.com")
                 .setPhone("47999999999")
                 .create();
-            
+
             System.out.println("✅ Cliente criado: " + cliente.getId());
-            
+
             // 3. Criar cobrança PIX
             Payment cobranca = Payment.creator()
                 .setCustomer(cliente.getId())
@@ -123,14 +123,14 @@ public class ExemploCompleto {
                 .setValue(Money.create(new BigDecimal("150.00")))
                 .setDescription("Pagamento de produto")
                 .create();
-            
+
             System.out.println("✅ Cobrança criada: " + cobranca.getId());
             System.out.println("💰 Valor: R$ " + cobranca.getValue());
             System.out.println("📱 QR Code: " + cobranca.getPixQrCode());
-            
+
             // 4. Verificar status
             System.out.println("📊 Status: " + cobranca.getStatus());
-            
+
         } catch (Exception e) {
             System.err.println("❌ Erro: " + e.getMessage());
             e.printStackTrace();
@@ -321,7 +321,7 @@ Agora que você já sabe o básico, explore mais recursos:
 
 ## 🆘 Precisa de Ajuda?
 
-- 📖 [Documentação Completa](README.md)
+- 📖 [Documentação Completa](readme.md)
 - 💻 [Exemplos de Código](https://github.com/jpdev01/asaasSdk/blob/master/src/main/java/io/github/jpdev/asaassdk/doc/Examples.java)
 - 🌐 [Documentação Oficial Asaas](https://docs.asaas.com)
 - 🐛 [Reportar Problemas](https://github.com/jpdev01/asaasSdk/issues)

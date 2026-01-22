@@ -204,7 +204,7 @@ Guia visual para encontrar rapidamente o que você precisa na documentação.
 ### 🌱 Iniciante
 
 **Comece por aqui:**
-1. [README.md](README.md) - Visão geral
+1. [README.md](readme.md) - Visão geral
 2. [quickstart.md](quickstart.md) - Primeiro código
 3. [customeraccount.md](customeraccount.md) - Criar clientes
 4. [payment.md](payment.md) - Criar cobranças
