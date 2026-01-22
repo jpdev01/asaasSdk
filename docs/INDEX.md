@@ -6,7 +6,7 @@ Navegue facilmente por toda a documentação do Asaas SDK.
 
 | Documento | Descrição |
 |-----------|-----------|
-| [README Principal](README.md) | Visão geral completa do SDK |
+| [README Principal](readme.md) | Visão geral completa do SDK |
 | [Guia de Início Rápido](quickstart.md) | Comece em minutos |
 | [Configurações Extras](extra.md) | Sandbox, timeout, rate limit |
 
@@ -154,7 +154,7 @@ Navegue facilmente por toda a documentação do Asaas SDK.
 
 ## 🆘 Precisa de Ajuda?
 
-- 📖 [README Principal](README.md) - Visão geral
+- 📖 [README Principal](readme.md) - Visão geral
 - 💻 [Exemplos de Código](https://github.com/jpdev01/asaasSdk/blob/master/src/main/java/io/github/jpdev/asaassdk/doc/Examples.java)
 - 🌐 [Documentação Oficial Asaas](https://docs.asaas.com)
 - 🐛 [Reportar Problemas](https://github.com/jpdev01/asaasSdk/issues)
