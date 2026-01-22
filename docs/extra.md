@@ -1,28 +1,24 @@
-## Sandbox
-You can use the sandbox environment to test your integration. To do this, you need to call the `initSandbox` method before making any requests.
+## ⚙️ Configuração
+
+### Timeout
+
+Configure o timeout das requisições (padrão: 30000ms):
+
 ```java
-Asaas.initSandbox("your_api_key");
+Asaas.setTimeout(10000); // 10 segundos
 ```
 
-## Timeout
+### Rate Limit
 
-The default timeout is 30000 milliseconds. You can change it by calling the `setTimeout` method.
-```java
-Asaas.setTimeout(10000);
-```
+Verifique os limites de requisição após cada chamada:
 
-## Rate Limit
-
-Possuímos limites de solicitações em certos endpoints onde o abuso pode de certa forma comprometer o desempenho e o uso das APIs do Asaas. Medimos as requisições e podemos restringi-las quando a quantidade permitida é ultrapassada.
-
-Você pode verificar o status nos cabeçalhos de resposta após uma requisição:
 ```java
 Transfer transfer = Transfer.pixAddressKeyCreator()
-        .setPixAddressKey("PIX_KEY")
-        .setValue(Money.create(0.01))
-        .setDescription("teste")
-        .setPixAddressKeyType(PixAddressKeyType.CPF)
-        .create();
+    .setPixAddressKey("sua_chave_pix")
+    .setValue(Money.create(10.00))
+    .setPixAddressKeyType(PixAddressKeyType.CPF)
+    .create();
 
-transfer.getRateLimit(); // Here you can get the rate limit of the last request
+RateLimit rateLimit = transfer.getRateLimit();
+System.out.println("Requisições restantes: " + rateLimit.getRemaining());
 ```
