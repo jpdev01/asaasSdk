@@ -259,7 +259,7 @@ Guia visual para encontrar rapidamente o que você precisa na documentação.
 
 ## 🆘 Precisa de Ajuda?
 
-- 📖 Não encontrou o que procura? Veja o [INDEX.md](INDEX.md)
+- 📖 Não encontrou o que procura? Veja o [INDEX.md](tryindex.md)
 - 🚀 Primeiro uso? Comece pelo [quickstart.md](quickstart.md)
 - 💬 Dúvidas? [Abra uma issue](https://github.com/jpdev01/asaasSdk/issues)
 - 📚 Documentação oficial: [docs.asaas.com](https://docs.asaas.com)
