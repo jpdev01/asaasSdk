@@ -59,6 +59,8 @@ public class Main {
 }
 ```
 
+Para o guia completo de ínicio rápido veja [Quick Start](./quickstart.md)
+
 ## ⚙️ Configurações adicionais
 
 [Configurações adicionais](./extra.md)
